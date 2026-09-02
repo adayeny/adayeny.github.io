@@ -292,6 +292,13 @@ a.active {
     vertical-align: middle;
 }
 
+.home-name {
+    font-size: 48px;
+    color: #100787;        /* override the blue */
+    font-family: 'Playfair Display', serif;  /* override the font */
+    letter-spacing: normal; /* override the 2px spacing */
+}
+
 .disply-table {
     display: table;
     height: 100vh;
