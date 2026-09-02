@@ -140,23 +140,29 @@ $(document).ready(function () {
                 }
             },
             submitHandler: function (form) {
-                $(form).ajaxSubmit({
-                    type: "POST",
-                    data: $(form).serialize(),
-                    url: "process.php",
-                    success: function () {
-                        $('#contact :input').attr('disabled', 'disabled');
-                        $('#contact').fadeTo("slow", 1, function () {
-                            $(this).find(':input').attr('disabled', 'disabled');
-                            $(this).find('label').css('cursor', 'default');
+                var formData = new FormData(form);
+                fetch("https://api.web3forms.com/submit", {
+                    method: "POST",
+                    headers: { "Accept": "application/json" },
+                    body: formData
+                })
+                .then(function (response) { return response.json(); })
+                .then(function (data) {
+                    if (data.success) {
+                        $(form).find(':input').attr('disabled', 'disabled');
+                        $(form).fadeTo("slow", 1, function () {
                             $('#success').fadeIn();
                         });
-                    },
-                    error: function () {
-                        $('#contact').fadeTo("slow", 1, function () {
+                    } else {
+                        $(form).fadeTo("slow", 1, function () {
                             $('#error').fadeIn();
                         });
                     }
+                })
+                .catch(function () {
+                    $(form).fadeTo("slow", 1, function () {
+                        $('#error').fadeIn();
+                    });
                 });
             }
         });

@@ -294,7 +294,7 @@
 
                 <ul class="social">
                     <li><a href="#"><i class="ion-social-facebook"></i></a></li>
-                    <li><a href="#"><i class="ion-logo-x"></i></a></li>
+                    <li><a href="#"><i class="ion-social-twitter"></i></a></li>
                     <li><a href="#"><i class="ion-social-instagram"></i></a></li>
                     <li><a href="#"><i class="ion-social-linkedin"></i></a></li>
                 </ul>
@@ -302,7 +302,9 @@
                 <div class="h-50"></div>
             </div>
             <div class="col-md-8" data-aos="fade-up">
-                <form class="contact-bg" id="contact-form" name="contact" method="post" novalidate="novalidate">
+                <form class="contact-bg" id="contact-form" name="contact" method="post" action="https://api.web3forms.com/submit" novalidate="novalidate">
+                    <input type="hidden" name="access_key" value="4ef2e9ea-5713-40e5-bed7-3f2de020dbf4" />
+                    <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off" />
                     <input type="text" name="name" class="form-control" placeholder="Your Name" />
                     <input type="email" name="email" class="form-control" placeholder="Your E-mail" />
                     <input type="text" name="phone" class="form-control" placeholder="Phone Number" />
