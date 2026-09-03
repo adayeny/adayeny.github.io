@@ -331,6 +331,8 @@ a.active {
     color: #33ff33;         /* classic CRT phosphor green */
     font-family: 'IBM VGA 8x16', 'VT323', 'Courier New', monospace;  /* real CP437 DOS font, with fallbacks */
     letter-spacing: normal; /* override the 2px spacing */
+    position: relative;
+    top: -288px;            /* 3 lines up, at 96px per line */
 }
 
 .dos-cursor {
