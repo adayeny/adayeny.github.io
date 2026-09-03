@@ -61,8 +61,8 @@ h4:before {
 ==================================================*/
 
 :root {
-    --surface-base: #f4f4f4;   /* replaces pure white in About/Projects */
-    --surface-alt: #e2e2e2;    /* alternating darker zone in Experience/Contact */
+    --surface-base: #e2e2e2;   /* replaces pure white in About/Projects */
+    --surface-alt: #d0d0d0;    /* alternating darker zone in Experience/Contact */
 }
 
 body {
