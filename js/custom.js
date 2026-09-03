@@ -79,6 +79,28 @@ $(document).ready(function () {
         disable: 'mobile'
     });
 
+    // DOS-style typewriter for hero name
+    (function () {
+        var el = document.querySelector('.dos-type');
+        if (!el) return;
+
+        var text = el.textContent;
+        var typeSpeed = 90; // ms per character
+        var i = 0;
+
+        el.textContent = '';
+
+        function typeChar() {
+            if (i < text.length) {
+                el.textContent += text.charAt(i);
+                i++;
+                setTimeout(typeChar, typeSpeed);
+            }
+        }
+
+        setTimeout(typeChar, 600);
+    })();
+
     //  isotope
     $('#projects').waitForImages(function () {
         var $container = $('.portfolio_container');
