@@ -275,9 +275,29 @@ a.active {
 ==================================================*/
 
 #home {
+    --home-overlay-color: 0, 0, 0;
+    --home-overlay-opacity: 0.5;
+
+    position: relative;
     background: url(../img/home-bg-2.jpg);
     background-size: cover;
     height: 100vh;
+}
+
+#home::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(var(--home-overlay-color), var(--home-overlay-opacity));
+    pointer-events: none;
+}
+
+#home .container {
+    position: relative;
+    z-index: 1;
 }
 
 .table-cell {
