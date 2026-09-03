@@ -287,17 +287,9 @@ a.active {
 
 .home-name {
     font-size: 96px;
-    color: #39dc44;        /* override the blue */
+    color: #ed5300;        /* override the blue */
     font-family: 'Playfair Display', serif;  /* override the font */
     letter-spacing: normal; /* override the 2px spacing */
-
-    font-family: 'Lato', sans-serif;
-    text-transform: capitalize;
-    letter-spacing: 2px;
-    position: relative;
-    color: #67e06b;
-    margin-left: 40px;
-    font-weight: 700;
 }
 
 .disply-table {
