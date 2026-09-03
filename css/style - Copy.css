@@ -287,30 +287,9 @@ a.active {
 
 .home-name {
     font-size: 96px;
-    color: #ed5300;        /* fallback for browsers without background-clip:text */
+    color: #ed5300;        /* override the blue */
     font-family: 'Playfair Display', serif;  /* override the font */
     letter-spacing: normal; /* override the 2px spacing */
-    font-weight: 900;
-
-    /* Metallic chrome gradient */
-    background: linear-gradient(
-        180deg,
-        #fff5ee 0%,
-        #f3d9c4 25%,
-        #b8763f 48%,
-        #4a2c12 50%,
-        #c98a4e 65%,
-        #fff0e0 100%
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-
-    /* 3D extruded bevel */
-    filter: drop-shadow(0 1px 0 #b8763f)
-            drop-shadow(0 2px 0 #8a5a2f)
-            drop-shadow(0 3px 0 #4a2c12)
-            drop-shadow(0 5px 6px rgba(0, 0, 0, 0.5));
 }
 
 .disply-table {
