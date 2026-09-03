@@ -327,7 +327,7 @@ a.active {
 }
 
 .home-name {
-    font-size: 96px;        /* multiple of the font's native 16px cell height stays crisp */
+    font-size: 90px;        /* multiple of the font's native 16px cell height stays crisp */
     color: #33ff33;         /* classic CRT phosphor green */
     font-family: 'IBM VGA 8x16', 'VT323', 'Courier New', monospace;  /* real CP437 DOS font, with fallbacks */
     letter-spacing: normal; /* override the 2px spacing */
