@@ -307,7 +307,7 @@ a.active {
 
 .home-name {
     font-size: 96px;
-    color: #ed5300;        /* override the blue */
+    color: #06b100;        /* override the blue */
     font-family: 'Playfair Display', serif;  /* override the font */
     letter-spacing: normal; /* override the 2px spacing */
 }
