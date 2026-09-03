@@ -60,10 +60,16 @@ h4:before {
 /* General
 ==================================================*/
 
+:root {
+    --surface-base: #f6f4f0;   /* replaces pure white in About/Projects */
+    --surface-alt: #e8e4dc;    /* alternating darker zone in Experience/Contact */
+}
+
 body {
     font-family: 'Open Sans', sans-serif;
     font-size: 14px;
     line-height: 24px;
+    background-color: var(--surface-base);
 }
 
 .size-50 {
@@ -349,7 +355,7 @@ a.active {
 
 #experience {
     padding: 100px 0;
-    background: #f3f3f3
+    background: var(--surface-alt);
 }
 
 .experience-row {
@@ -441,7 +447,7 @@ a.active {
     -webkit-transform: rotate(45deg);
     transform: rotate(45deg);
     background-color: #425BB5;
-    outline: 10px solid #f3f3f3;
+    outline: 10px solid var(--surface-alt);
     display: block;
     margin: 0.5em 0.5em 0.5em -0.5em;
     position: absolute;
@@ -657,7 +663,7 @@ a.active {
 
 #contact {
     padding: 100px 0;
-    background: #f3f3f3
+    background: var(--surface-alt);
 }
 
 #contact-form input,
