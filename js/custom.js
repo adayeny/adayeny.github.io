@@ -39,6 +39,11 @@ $(document).ready(function () {
         var $el = $(this),
             id = $el.attr('href');
 
+        // Only hijack in-page anchors; let real links (e.g. /blog/) navigate normally.
+        if (!id || id.charAt(0) !== '#') {
+            return true;
+        }
+
         $('html, body').animate({
             scrollTop: $(id).offset().top - nav_height + 2
         }, 600);

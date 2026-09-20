@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 240" role="img" aria-labelledby="klTitle klDesc" font-family="sans-serif">
+  <title id="klTitle">Effective key strength before and after Grover's algorithm</title>
+  <desc id="klDesc">AES-128 provides 128 bits of security today, dropping to roughly 64 bits against a quantum attacker using Grover's algorithm. AES-256 restores full 128-bit-equivalent security even against that attack.</desc>
+  <rect width="700" height="240" fill="#fff"/>
+
+  <!-- axis -->
+  <line x1="180" y1="20" x2="180" y2="210" stroke="#ccc" stroke-width="1.5"/>
+
+  <!-- Bar 1: AES-128 today -->
+  <text x="170" y="50" text-anchor="end" font-size="13" fill="#333">AES-128, classical</text>
+  <rect x="180" y="34" width="256" height="26" fill="#3a55a1"/>
+  <text x="446" y="52" font-size="13" font-weight="700" fill="#3a55a1">128-bit security</text>
+
+  <!-- Bar 2: AES-128 vs Grover -->
+  <text x="170" y="120" text-anchor="end" font-size="13" fill="#333">AES-128, vs. Grover&#8217;s</text>
+  <rect x="180" y="104" width="128" height="26" fill="#D33E43"/>
+  <text x="318" y="122" font-size="13" font-weight="700" fill="#D33E43">~64-bit security</text>
+
+  <!-- Bar 3: AES-256 vs Grover -->
+  <text x="170" y="190" text-anchor="end" font-size="13" fill="#333">AES-256, vs. Grover&#8217;s</text>
+  <rect x="180" y="174" width="256" height="26" fill="#3a55a1"/>
+  <text x="446" y="192" font-size="13" font-weight="700" fill="#3a55a1">~128-bit security</text>
+</svg>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Router hub connected to four device nodes">
+  <rect width="120" height="120" fill="#eef0f7"/>
+  <line x1="60" y1="60" x2="22" y2="33" stroke="#425BB5" stroke-width="2.5"/>
+  <line x1="60" y1="60" x2="22" y2="87" stroke="#c3c3c3" stroke-width="2"/>
+  <line x1="60" y1="60" x2="98" y2="33" stroke="#425BB5" stroke-width="2.5"/>
+  <line x1="60" y1="60" x2="98" y2="87" stroke="#c3c3c3" stroke-width="2"/>
+  <circle cx="22" cy="33" r="10" fill="#fff" stroke="#425BB5" stroke-width="2.5"/>
+  <circle cx="98" cy="33" r="10" fill="#fff" stroke="#425BB5" stroke-width="2.5"/>
+  <circle cx="22" cy="87" r="10" fill="#fff" stroke="#bbb" stroke-width="2.5"/>
+  <circle cx="98" cy="87" r="10" fill="#fff" stroke="#bbb" stroke-width="2.5"/>
+  <circle cx="60" cy="60" r="16" fill="#3a55a1"/>
+</svg>

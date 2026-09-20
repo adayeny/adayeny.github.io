@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>The $15 AI Coding Agent: Running an Autonomous LLM Workflow on a Microcontroller | Avesta Dayeny</title>
+    <meta name="description" content="By pairing real Linux on an ESP32-S3, WebAssembly sandboxing, and Vercel Labs' minimalist fx agent, you can run a self-contained coding agent appliance for less than the cost of lunch.">
+    <meta name="author" content="Avesta Dayeny">
+    <link rel="canonical" href="https://resume.avmoda.tech/blog/15-dollar-ai-coding-agent.html">
+
+    <!-- Open Graph / LinkedIn / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="The $15 AI Coding Agent: Running an Autonomous LLM Workflow on a Microcontroller">
+    <meta property="og:description" content="Real Linux on an ESP32-S3, WebAssembly sandboxing, and a minimalist coding agent — a self-contained agent appliance for less than the cost of lunch.">
+    <meta property="og:url" content="https://resume.avmoda.tech/blog/15-dollar-ai-coding-agent.html">
+    <meta property="og:image" content="https://resume.avmoda.tech/img/about-img.jpg">
+    <meta property="article:published_time" content="2026-09-16">
+    <meta property="article:author" content="Avesta Dayeny">
+
+    <!-- Twitter / X Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="The $15 AI Coding Agent: Running an Autonomous LLM Workflow on a Microcontroller">
+    <meta name="twitter:description" content="Real Linux on an ESP32-S3, WebAssembly sandboxing, and a minimalist coding agent, running for less than the cost of lunch.">
+    <meta name="twitter:image" content="https://resume.avmoda.tech/img/about-img.jpg">
+    <meta name="twitter:site" content="@ADayeny">
+
+    <link rel="icon" href="../img/favicon.gif" type="image/x-icon">
+
+    <!-- Structured data for search engines -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "The $15 AI Coding Agent: Running an Autonomous LLM Workflow on a Microcontroller",
+      "description": "By pairing real Linux on an ESP32-S3, WebAssembly sandboxing, and Vercel Labs' minimalist fx agent, you can run a self-contained coding agent appliance for less than the cost of lunch.",
+      "datePublished": "2026-09-16",
+      "dateModified": "2026-09-16",
+      "url": "https://resume.avmoda.tech/blog/15-dollar-ai-coding-agent.html",
+      "mainEntityOfPage": "https://resume.avmoda.tech/blog/15-dollar-ai-coding-agent.html",
+      "image": "https://resume.avmoda.tech/img/about-img.jpg",
+      "author": {
+        "@type": "Person",
+        "name": "Avesta Dayeny",
+        "url": "https://resume.avmoda.tech/"
+      },
+      "publisher": {
+        "@type": "Person",
+        "name": "Avesta Dayeny",
+        "url": "https://resume.avmoda.tech/"
+      }
+    }
+    </script>
+
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/blog.css" rel="stylesheet">
+</head>
+
+<body class="blog-page">
+
+    <!-- header -->
+    <header class="blog-header">
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/blog/" class="active">Blog</a></li>
+                <li><a href="/#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- ./header -->
+
+    <div class="section blog-post">
+        <div class="container">
+            <article>
+                <p class="post-meta"><time datetime="2026-09-16">September 16, 2026</time></p>
+                <h1>The $15 AI Coding Agent: Running an Autonomous LLM Workflow on a Microcontroller</h1>
+
+                <div class="hero-frame">
+                    <img src="/img/blog/esp32-hero.svg" alt="An ESP32-S3 board connected over HTTP/SSE to a terminal window running the fx coding agent">
+                </div>
+
+                <div class="post-body">
+                    <p>Most AI agents today are resource hogs. Running an autonomous coding agent like Claude Engineer, Devin-style loops, or OpenDevin typically demands hundreds of megabytes of RAM just to boot the runtime&mdash;trapping them inside chunky Node.js or Python runtimes on laptops, cloud VMs, or dedicated servers.</p>
+
+                    <p>What if your agent harness didn&rsquo;t need a PC at all? What if you could run a fully functional, self-contained coding agent on a microcontroller that costs less than lunch?</p>
+
+                    <p>By pairing native <strong>NOMMU Linux on an ESP32-S3</strong>, WebAssembly via <strong>WAMR</strong>, and Vercel Labs&rsquo; minimalist <code>fx</code> agent, you can deploy a dedicated, ultra-low-power physical coding appliance for anywhere from $15 (headless) to $80 (with an industrial touch display).</p>
+
+                    <h2>The Architecture: Brains in the Cloud, Hands at the Edge</h2>
+
+                    <p>A common misconception about embedded AI is that the microcontroller needs to perform local neural network inference. On an ESP32, that would yield tokens per hour, not tokens per second.</p>
+
+                    <p>Instead, this stack decouples the <strong>agent harness</strong> (the state machine that reads files, executes shell commands, and handles tool calling) from the <strong>inference engine</strong> (the LLM):</p>
+
+                    <figure class="figure">
+                        <img src="/img/blog/esp32-architecture.svg" alt="Diagram: an upstream LLM provider connects over HTTP/SSE/JSON-RPC to the ESP32-S3. Core 0 runs ESP-IDF for Wi-Fi/BLE, bridged over shared memory to Core 1, which runs Linux 6.11, which runs WAMR, which runs the fx agent, which reaches the local filesystem, shell, and GPIO.">
+                        <figcaption>The agent harness lives on the chip; inference stays upstream.</figcaption>
+                    </figure>
+
+                    <p>The ESP32 runs the harness, holds the workspace, reads project files, and triggers commands. Inference runs upstream over low-latency SSE&mdash;either via the Vercel AI Gateway or your own local router on your LAN.</p>
+
+                    <h2>Anatomy of the Stack</h2>
+
+                    <h3>1. The Silicon: ESP32-S3 (N32R8)</h3>
+
+                    <p>The ESP32-S3 packs a dual-core Xtensa LX7 processor running at 240 MHz, 32MB of external flash, and 8MB of octal PSRAM.</p>
+
+                    <ul>
+                        <li><strong>Bare Metal ($10&ndash;$20):</strong> A raw ESP32-S3 dev board works completely headless over UART or SSH.</li>
+                        <li><strong>Turnkey Appliance ($80):</strong> Seeed Studio&rsquo;s <strong>reTerminal E1001</strong> packages the same N32R8 chip inside an industrial housing complete with a 4-inch display, physical buttons, an RTC, and external I/O headers.</li>
+                    </ul>
+
+                    <h3>2. The OS: Real Linux 6.11 on NOMMU Xtensa</h3>
+
+                    <p>This isn&rsquo;t an emulator. Using the work from Max Filippov (<a href="https://github.com/jcmvbkbc/linux-xtensa" target="_blank" rel="noopener noreferrer">jcmvbkbc/linux-xtensa</a>) and Paul Neja (<a href="https://github.com/paulneja/Linux-on-esp32-S3" target="_blank" rel="noopener noreferrer">paulneja/Linux-on-esp32-S3</a>), the ESP32 boots a real Linux 6.11 kernel.</p>
+
+                    <ul>
+                        <li><strong>Core 0</strong> runs Espressif&rsquo;s ESP-IDF RTOS to handle the closed-source Wi-Fi/Bluetooth stack.</li>
+                        <li><strong>Core 1</strong> boots the Linux kernel.</li>
+                        <li>Network packets bridge between the two cores via shared RAM exposed as a native <code>espsta0</code> interface.</li>
+                        <li><strong>The Catch:</strong> The ESP32 lacks a Memory Management Unit (MMU). That means no virtual memory, no standard <code>fork()</code> (applications rely on <code>vfork()</code> and FDPIC ELF binaries), and a strict 8MB ceiling for RAM.</li>
+                    </ul>
+
+                    <h3>3. Execution Runtime: WAMR &amp; microWASM</h3>
+
+                    <p>Because NOMMU Linux has strict memory limits, running native dynamic runtimes is risky. Enter <strong>WAMR (WebAssembly Micro Runtime)</strong>:</p>
+
+                    <ul>
+                        <li>Consumes only single-digit kilobytes of memory.</li>
+                        <li>Provides a secure, sandboxed WASI interface.</li>
+                        <li>Uses <strong>microWASM</strong> ahead-of-time optimization to strip and prepare <code>.wasm</code> binaries so they execute reliably within our constrained 8MB PSRAM pool without causing heap fragmentation panics.</li>
+                    </ul>
+
+                    <h3>4. The Agent: Vercel Labs fx</h3>
+
+                    <p>Written in Zig by the Vercel Labs team, <a href="https://github.com/vercel-labs/fx" target="_blank" rel="noopener noreferrer">fx</a> is a Unix-style coding agent built from scratch for speed and minimal footprint. While typical agents pull in gigabytes of <code>node_modules</code>, <code>fx</code> compiles down to a compact sub-8MB binary or a portable <code>.wasm</code> module with near-instant boot times. Porting it to the ESP32 via <a href="https://github.com/iammrduncan/esp32-fx" target="_blank" rel="noopener noreferrer">iammrduncan/esp32-fx</a> turns the microcontroller into an autonomous workspace manager.</p>
+
+                    <h2>Cutting the Cord: Routing to a Local Model</h2>
+
+                    <p>While early builds of <code>fx</code> routed exclusively through Vercel&rsquo;s cloud gateway, modern configurations let you point directly to an OpenAI-compatible endpoint&mdash;such as a local Ollama server, vLLM instance, or LAN router.</p>
+
+                    <p>On the ESP32 root filesystem, create <code>~/.fx/settings.json</code>:</p>
+
+                    <pre><code>{
+  "connections": {
+    "local-router": {
+      "base_url": "http://192.168.1.100:11434/v1",
+      "auth": {
+        "type": "none"
+      },
+      "tool_choice_mode": "omit",
+      "model_metadata": {
+        "qwen2.5-coder:7b": {
+          "context_window": 32768,
+          "max_output_tokens": 4096,
+          "supports_tool_use": true,
+          "supports_vision": false
+        }
+      }
+    }
+  },
+  "models": {
+    "local-router": "qwen2.5-coder:7b"
+  }
+}</code></pre>
+
+                    <h3>Why Metadata Matters on Edge Devices</h3>
+
+                    <p>In <code>settings.json</code>, specifying <code>context_window</code> is non-negotiable. Because the ESP32 cannot hold massive conversation trees in RAM, <code>fx</code> automatically triggers <strong>session compaction</strong> once the context reaches 80% capacity. Without this parameter, memory exhaustion will kill the process mid-stream.</p>
+
+                    <p>Activate the connection in <code>/etc/profile</code>:</p>
+
+                    <pre><code>export FX_PROVIDER="local-router"
+export FX_MODEL="qwen2.5-coder:7b"</code></pre>
+
+                    <p>Verify the setup on the device:</p>
+
+                    <pre><code># Verify the connection
+fx models
+
+# Test the agentic tool-calling loop locally
+fx ask "List all files in the current workspace and summarize the project structure"</code></pre>
+
+                    <h2>Real-World Use Cases</h2>
+
+                    <p>Why build an agent on an ESP32 instead of running it on your laptop?</p>
+
+                    <ol>
+                        <li><strong>The Physical &ldquo;Prompt Box&rdquo; Console:</strong> Paired with the reTerminal E1001, you get a dedicated hardware appliance sitting under your monitor. Assign it specific duties&mdash;triage GitHub issues, run continuous sanity checks on builds, or review pull requests&mdash;without consuming desktop memory or screen real estate.</li>
+                        <li><strong>True Hardware Sandboxing:</strong> When an autonomous agent is testing unfamiliar scripts or modifying configurations, running it on your main system carries risk. On an ESP32, the blast radius is physically contained. If an agent loops, corrupts the filesystem, or tries something dangerous, you&rsquo;re out a $15 board, not your primary workstation.</li>
+                        <li><strong>Physical-World Diagnostics:</strong> Connected directly to hardware buses (I2C, SPI, RS-485, CAN bus), an ESP32 running <code>fx</code> can observe physical sensors, interpret fault codes with an LLM, and execute physical remediations like power-cycling relays or flashing warning beacons.</li>
+                    </ol>
+
+                    <h2>What to Watch Out For</h2>
+
+                    <ul>
+                        <li><strong>Heavy Compiles:</strong> The ESP32&rsquo;s 240 MHz Xtensa core is plenty fast for running <code>fx</code>, handling git trees, and executing scripts, but building large native codebases locally will be slow. Keep the agent focused on editing files, scripting, and triggering remote CI/CD jobs.</li>
+                        <li><strong>Memory Headroom:</strong> With 8MB of octal PSRAM shared between Linux and WAMR, keep an eye on memory fragmentation. Static heap pools within WAMR are your best defense against out-of-memory lockups.</li>
+                    </ul>
+
+                    <h2>Summary</h2>
+
+                    <p>The era of agents being tethered to power-hungry rigs is ending. Combining native NOMMU Linux, WebAssembly sandboxing, and lean systems languages like Zig allows an autonomous agent to run on a sub-$20 chip drawing less than a single watt.</p>
+                </div>
+
+                <p class="post-nav"><a href="/blog/">&larr; Back to all posts</a></p>
+            </article>
+        </div>
+    </div>
+
+    <!-- footer -->
+    <footer class="blog-footer">
+        <div class="container">
+            <p>&copy; 2026 Avesta Dayeny &middot; <a href="/">resume.avmoda.tech</a></p>
+        </div>
+    </footer>
+    <!-- ./footer -->
+
+</body>
+
+</html>

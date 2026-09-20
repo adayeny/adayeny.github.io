@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" role="img" aria-labelledby="eHeroTitle eHeroDesc">
+  <title id="eHeroTitle">ESP32-S3 board connected to a terminal window</title>
+  <desc id="eHeroDesc">A microcontroller board labeled ESP32-S3 sending data over SSE to a dark terminal window printing green command output with a blinking cursor.</desc>
+  <defs>
+    <pattern id="eGrid" width="26" height="26" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.5" fill="#3a3f52"/>
+    </pattern>
+    <style>
+      .cursor { animation: blink 1s steps(1, start) infinite; }
+      @keyframes blink { 50% { opacity: 0; } }
+      @media (prefers-reduced-motion: reduce) {
+        .cursor { animation: none; }
+      }
+    </style>
+  </defs>
+
+  <rect width="1200" height="400" fill="#1b1f2b"/>
+  <rect width="1200" height="400" fill="url(#eGrid)"/>
+
+  <!-- Board -->
+  <g transform="translate(90,90)">
+    <rect x="0" y="0" width="330" height="220" rx="10" fill="#233047" stroke="#425BB5" stroke-width="2.5"/>
+    <circle cx="20" cy="20" r="6" fill="#0f1522"/>
+    <circle cx="310" cy="20" r="6" fill="#0f1522"/>
+    <circle cx="20" cy="200" r="6" fill="#0f1522"/>
+    <circle cx="310" cy="200" r="6" fill="#0f1522"/>
+
+    <!-- chip -->
+    <rect x="95" y="70" width="140" height="80" rx="4" fill="#0f1522" stroke="#5b8dff" stroke-width="1.5"/>
+    <text x="165" y="105" text-anchor="middle" font-family="monospace" font-size="14" fill="#8fb2ff">ESP32-S3</text>
+    <text x="165" y="124" text-anchor="middle" font-family="monospace" font-size="10" fill="#5b6b8c">N32R8 · 8MB PSRAM</text>
+
+    <!-- castellated pins -->
+    <g fill="#8fb2ff">
+      <rect x="10" y="-6" width="10" height="6"/>
+      <rect x="40" y="-6" width="10" height="6"/>
+      <rect x="70" y="-6" width="10" height="6"/>
+      <rect x="100" y="-6" width="10" height="6"/>
+      <rect x="130" y="-6" width="10" height="6"/>
+      <rect x="160" y="-6" width="10" height="6"/>
+      <rect x="190" y="-6" width="10" height="6"/>
+      <rect x="220" y="-6" width="10" height="6"/>
+      <rect x="250" y="-6" width="10" height="6"/>
+      <rect x="280" y="-6" width="10" height="6"/>
+      <rect x="10" y="220" width="10" height="6"/>
+      <rect x="40" y="220" width="10" height="6"/>
+      <rect x="70" y="220" width="10" height="6"/>
+      <rect x="100" y="220" width="10" height="6"/>
+      <rect x="130" y="220" width="10" height="6"/>
+      <rect x="160" y="220" width="10" height="6"/>
+      <rect x="190" y="220" width="10" height="6"/>
+      <rect x="220" y="220" width="10" height="6"/>
+      <rect x="250" y="220" width="10" height="6"/>
+      <rect x="280" y="220" width="10" height="6"/>
+    </g>
+    <text x="165" y="250" text-anchor="middle" font-family="sans-serif" font-size="13" letter-spacing="2" fill="#8fa2c8">$15 MICROCONTROLLER</text>
+  </g>
+
+  <!-- connector -->
+  <line x1="435" y1="200" x2="640" y2="200" stroke="#5b8dff" stroke-width="2" stroke-dasharray="6 6"/>
+  <path d="M 630 193 L 644 200 L 630 207 Z" fill="#5b8dff"/>
+  <text x="537" y="188" text-anchor="middle" font-family="monospace" font-size="12" fill="#8fb2ff">HTTP / SSE</text>
+
+  <!-- Terminal -->
+  <g transform="translate(660,80)">
+    <rect x="0" y="0" width="450" height="240" rx="8" fill="#0d0f14" stroke="#333c52" stroke-width="1.5"/>
+    <rect x="0" y="0" width="450" height="28" rx="8" fill="#1b1f2b"/>
+    <circle cx="18" cy="14" r="5" fill="#D33E43"/>
+    <circle cx="36" cy="14" r="5" fill="#e8a33d"/>
+    <circle cx="54" cy="14" r="5" fill="#33ff33"/>
+
+    <text x="20" y="58" font-family="monospace" font-size="15" fill="#33ff33">$ fx ask "list files"</text>
+    <text x="20" y="86" font-family="monospace" font-size="15" fill="#6fdc6f">&gt; reading workspace...</text>
+    <text x="20" y="114" font-family="monospace" font-size="15" fill="#33ff33">&gt; 3 files found<tspan class="cursor" fill="#33ff33">_</tspan></text>
+  </g>
+</svg>

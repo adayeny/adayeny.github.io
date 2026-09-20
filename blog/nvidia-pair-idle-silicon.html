@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Harnessing Idle Silicon: How NVIDIA PAIR Turns Your Home Network Into an AI Cluster | Avesta Dayeny</title>
+    <meta name="description" content="NVIDIA's open-source Personal AI Router (PAIR) turns every underused GPU on your LAN into a shared inference pool. How it actually works, and how to set it up with Ollama and LM Studio.">
+    <meta name="author" content="Avesta Dayeny">
+    <link rel="canonical" href="https://resume.avmoda.tech/blog/nvidia-pair-idle-silicon.html">
+
+    <!-- Open Graph / LinkedIn / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Harnessing Idle Silicon: How NVIDIA PAIR Turns Your Home Network Into an AI Cluster">
+    <meta property="og:description" content="NVIDIA's open-source Personal AI Router turns every underused GPU on your LAN into a shared inference pool — how it actually works, and how to set it up.">
+    <meta property="og:url" content="https://resume.avmoda.tech/blog/nvidia-pair-idle-silicon.html">
+    <meta property="og:image" content="https://resume.avmoda.tech/img/about-img.jpg">
+    <meta property="article:published_time" content="2026-09-09">
+    <meta property="article:author" content="Avesta Dayeny">
+
+    <!-- Twitter / X Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Harnessing Idle Silicon: How NVIDIA PAIR Turns Your Home Network Into an AI Cluster">
+    <meta name="twitter:description" content="NVIDIA's open-source Personal AI Router turns every underused GPU on your LAN into a shared inference pool.">
+    <meta name="twitter:image" content="https://resume.avmoda.tech/img/about-img.jpg">
+    <meta name="twitter:site" content="@ADayeny">
+
+    <link rel="icon" href="../img/favicon.gif" type="image/x-icon">
+
+    <!-- Structured data for search engines -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Harnessing Idle Silicon: How NVIDIA PAIR Turns Your Home Network Into an AI Cluster",
+      "description": "NVIDIA's open-source Personal AI Router (PAIR) turns every underused GPU on your LAN into a shared inference pool.",
+      "datePublished": "2026-09-09",
+      "dateModified": "2026-09-09",
+      "url": "https://resume.avmoda.tech/blog/nvidia-pair-idle-silicon.html",
+      "mainEntityOfPage": "https://resume.avmoda.tech/blog/nvidia-pair-idle-silicon.html",
+      "image": "https://resume.avmoda.tech/img/about-img.jpg",
+      "author": {
+        "@type": "Person",
+        "name": "Avesta Dayeny",
+        "url": "https://resume.avmoda.tech/"
+      },
+      "publisher": {
+        "@type": "Person",
+        "name": "Avesta Dayeny",
+        "url": "https://resume.avmoda.tech/"
+      }
+    }
+    </script>
+
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/blog.css" rel="stylesheet">
+</head>
+
+<body class="blog-page">
+
+    <!-- header -->
+    <header class="blog-header">
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/blog/" class="active">Blog</a></li>
+                <li><a href="/#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- ./header -->
+
+    <div class="section blog-post">
+        <div class="container">
+            <article>
+                <p class="post-meta"><time datetime="2026-09-09">September 9, 2026</time></p>
+                <h1>Harnessing Idle Silicon: How NVIDIA PAIR Turns Your Home Network Into an AI Cluster</h1>
+
+                <div class="hero-frame">
+                    <img src="/img/blog/pair-hero.svg" alt="A central PAIR hub connected to four machines: an active RTX desktop and Linux server, and an idle laptop and Apple Silicon machine">
+                </div>
+
+                <div class="post-body">
+                    <p>Local AI has reached an awkward inflection point. If you run models on your own hardware, you probably own more than one capable machine: a primary gaming desktop with a beefy RTX card, a laptop or Mac sitting on a dock, perhaps an older workstation or home lab server idling under a desk. Yet the moment you spin up multi-step agentic workflows, background RAG pipelines, or coding assistants, your primary machine chokes while the rest of your local hardware sits unused.</p>
+
+                    <p>Enter <strong>NVIDIA PAIR (Personal AI Router)</strong>. Open-sourced under the Apache 2.0 license in September 2026, PAIR solves the fragmented-compute problem by turning the machines already on your LAN into a coordinated local inference pool.</p>
+
+                    <h2>A Router, Not a Supercomputer</h2>
+
+                    <p>To understand why PAIR is compelling, it helps to understand what it isn&rsquo;t. It doesn&rsquo;t shard a single 70B-parameter model across three machines over Wi-Fi, and it doesn&rsquo;t pool VRAM. Model-parallel tensor sharding over consumer Ethernet introduces latency bottlenecks that make it impractical on a home network.</p>
+
+                    <p>Instead, PAIR acts as a router for inference requests. When an agent, script, or IDE plugin issues an OpenAI-compatible API request, PAIR checks which paired machines are actually available right now and hands the complete prompt to one of them &mdash; never split across several.</p>
+
+                    <ul>
+                        <li><strong>Heterogeneous by design:</strong> PAIR runs on Windows, Linux, and macOS, in both x64 and arm64 builds &mdash; your RTX rig, a Linux home server, and an Apple Silicon laptop can all sit in the same pool.</li>
+                        <li><strong>Built on engines you already run:</strong> At launch it drives two inference backends &mdash; Ollama and LM Studio &mdash; rather than inventing a new model format.</li>
+                        <li><strong>Load-aware:</strong> PAIR keeps track of how busy each paired machine is and steps back from a node that&rsquo;s already loaded with something else, favoring whichever machine actually has headroom.</li>
+                    </ul>
+
+                    <h2>How PAIR Actually Works</h2>
+
+                    <p>Under the hood, PAIR runs as a local daemon that exposes an OpenAI-compatible endpoint &mdash; and an Ollama-compatible one &mdash; to any application on your primary machine. It keeps track of which paired nodes are online and what they can currently serve, and dispatches each incoming request to one of them. The routing logic, not tensor math, is the whole product.</p>
+
+                    <h2>Why It Matters for Local AI Agents</h2>
+
+                    <p>The shift from single-prompt chatbots to autonomous agents breaks single-GPU local setups. A modern agentic loop doesn&rsquo;t just generate one response; it calls tools, validates syntax, summarizes documents, and reflects on intermediate steps &mdash; often requiring dozens of LLM calls in under a minute.</p>
+
+                    <p>Firing off fifteen serial calls against a single local GPU grinds your system to a halt. With PAIR, your IDE can query a coding model on your desktop&rsquo;s RTX GPU while a background research task runs against an Ollama instance on your secondary rig &mdash; concurrent agent execution, zero cloud API fees, and your data never leaving hardware you own.</p>
+
+                    <p>PAIR shows a pragmatic understanding of how enthusiasts and developers actually work: instead of telling you to buy an enterprise cluster, it turns the silicon you already paid for into a distributed home data center.</p>
+
+                    <h2>Getting It Running: Native Installers, Not Containers</h2>
+
+                    <p>PAIR ships today as a public beta (v0.1.1) under Apache 2.0, as a signed native desktop app &mdash; there&rsquo;s no official container image to pull and no docker-compose file to write.</p>
+
+                    <ol>
+                        <li><strong>Install PAIR on your primary machine.</strong> Grab the signed installer for your OS &mdash; Windows, macOS, or Linux, x64 and arm64 are both supported &mdash; from the <a href="https://github.com/NVIDIA/Personal-AI-Router" target="_blank" rel="noopener noreferrer">NVIDIA/Personal-AI-Router</a> releases page and run it like any other desktop app.</li>
+                        <li><strong>Run your inference engine on each node.</strong> PAIR currently drives two backends: Ollama and LM Studio. Install and run whichever one you already use on each machine you want in the pool. Whether a given model actually runs well on a given machine is between that engine and that hardware &mdash; PAIR doesn&rsquo;t second-guess it.</li>
+                        <li><strong>Pair the nodes.</strong> From your primary machine, invite a second one to join. The inviting machine displays a six-digit PIN, you enter it on the invited machine, and that PIN is the entire trust bootstrap &mdash; no certificates, no manual key exchange.</li>
+                        <li><strong>Point your applications at PAIR.</strong> PAIR exposes its OpenAI- and Ollama-compatible endpoints locally; the exact URL and port are shown in the app itself under <strong>Endpoints &rarr; API endpoints</strong>. Swap that into whatever you&rsquo;d normally point at <code>http://localhost:11434</code> &mdash; your IDE, an agent framework, Open WebUI &mdash; and PAIR takes it from there.</li>
+                    </ol>
+
+                    <p>Once it&rsquo;s running, PAIR opportunistically balances agentic workloads across your local fleet instead of pinning everything to whichever machine happens to be in front of you.</p>
+                </div>
+
+                <p class="post-nav"><a href="/blog/">&larr; Back to all posts</a></p>
+            </article>
+        </div>
+    </div>
+
+    <!-- footer -->
+    <footer class="blog-footer">
+        <div class="container">
+            <p>&copy; 2026 Avesta Dayeny &middot; <a href="/">resume.avmoda.tech</a></p>
+        </div>
+    </footer>
+    <!-- ./footer -->
+
+</body>
+
+</html>

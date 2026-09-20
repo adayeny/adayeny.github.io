@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Quantum Computing Will Break Half of Encryption — Here's Which Half | Avesta Dayeny</title>
+    <meta name="description" content="Quantum computers won't break all encryption equally: symmetric ciphers just need a longer key, but public-key cryptography needs to be replaced outright. What 'harvest now, decrypt later' means for your data today.">
+    <meta name="author" content="Avesta Dayeny">
+    <link rel="canonical" href="https://resume.avmoda.tech/blog/quantum-computing-encryption-risk.html">
+
+    <!-- Open Graph / LinkedIn / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Quantum Computing Will Break Half of Encryption — Here's Which Half">
+    <meta property="og:description" content="Symmetric ciphers just need a longer key. Public-key cryptography needs to be replaced outright. Here's the difference, and why 'harvest now, decrypt later' makes this an operational risk today.">
+    <meta property="og:url" content="https://resume.avmoda.tech/blog/quantum-computing-encryption-risk.html">
+    <meta property="og:image" content="https://resume.avmoda.tech/img/about-img.jpg">
+    <meta property="article:published_time" content="2026-09-02">
+    <meta property="article:author" content="Avesta Dayeny">
+
+    <!-- Twitter / X Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Quantum Computing Will Break Half of Encryption — Here's Which Half">
+    <meta name="twitter:description" content="Symmetric ciphers just need a longer key. Public-key cryptography needs to be replaced outright.">
+    <meta name="twitter:image" content="https://resume.avmoda.tech/img/about-img.jpg">
+    <meta name="twitter:site" content="@ADayeny">
+
+    <link rel="icon" href="../img/favicon.gif" type="image/x-icon">
+
+    <!-- Structured data for search engines -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Quantum Computing Will Break Half of Encryption — Here's Which Half",
+      "description": "Quantum computers won't break all encryption equally: symmetric ciphers just need a longer key, but public-key cryptography needs to be replaced outright.",
+      "datePublished": "2026-09-02",
+      "dateModified": "2026-09-02",
+      "url": "https://resume.avmoda.tech/blog/quantum-computing-encryption-risk.html",
+      "mainEntityOfPage": "https://resume.avmoda.tech/blog/quantum-computing-encryption-risk.html",
+      "image": "https://resume.avmoda.tech/img/about-img.jpg",
+      "author": {
+        "@type": "Person",
+        "name": "Avesta Dayeny",
+        "url": "https://resume.avmoda.tech/"
+      },
+      "publisher": {
+        "@type": "Person",
+        "name": "Avesta Dayeny",
+        "url": "https://resume.avmoda.tech/"
+      }
+    }
+    </script>
+
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/blog.css" rel="stylesheet">
+</head>
+
+<body class="blog-page">
+
+    <!-- header -->
+    <header class="blog-header">
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/blog/" class="active">Blog</a></li>
+                <li><a href="/#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- ./header -->
+
+    <div class="section blog-post">
+        <div class="container">
+            <article>
+                <p class="post-meta"><time datetime="2026-09-02">September 2, 2026</time></p>
+                <h1>Quantum Computing Will Break Half of Encryption — Here's Which Half</h1>
+
+                <div class="hero-frame">
+                    <img src="/img/blog/quantum-hero.svg" alt="An intact padlock labeled AES-256 next to a fractured, open padlock labeled RSA / ECC">
+                </div>
+
+                <div class="post-body">
+                    <p>Whenever headlines mention quantum computers &ldquo;breaking the internet,&rdquo; the panic usually sounds binary&mdash;either everything stays safe, or every secret on Earth gets exposed overnight.</p>
+
+                    <p>The reality is far more nuanced. Quantum computing doesn't hit all security the same way. Instead, it divides digital security straight down the middle: one half only needs a longer key, while the other faces near-total collapse unless we rebuild it from scratch.</p>
+
+                    <p>More critically, this is not just an abstract problem for tomorrow&rsquo;s physicists&mdash;it is a concrete operational risk for businesses today.</p>
+
+                    <h2>The Two Locks Protecting Your Daily Life</h2>
+
+                    <p>Every time you tap to pay, send a message, or browse a website, two different cryptographic systems work together in a tag team:</p>
+
+                    <ul>
+                        <li><strong>Symmetric Encryption (The Combination Safe):</strong> Fast and powerful. Both sender and receiver share the exact same secret key. It does the heavy lifting: encrypting your phone&rsquo;s storage (BitLocker or FileVault), streaming data over a VPN, or scrambling a 4K video call on WhatsApp.</li>
+                        <li><strong>Asymmetric Encryption (The Mailbox Slot):</strong> Clever and math-heavy. Anyone can drop a message through the open slot using a public key, but only the owner holding the private key can open the back door. It handles the initial handshake: verifying that your bank&rsquo;s website is authentic and securely swapping a temporary key before data starts flowing.</li>
+                    </ul>
+
+                    <h2>Lock #1: Symmetric Ciphers Face Grover&rsquo;s Algorithm</h2>
+
+                    <p>In classical computing, cracking an Advanced Encryption Standard (AES) combination requires checking every single possibility&mdash;a brute-force search that would take classical supercomputers longer than the lifespan of the universe.</p>
+
+                    <p>In 1996, computer scientist Lov Grover introduced a quantum database search algorithm. Rather than checking possibilities one at a time, it leverages quantum mechanics to search through possibilities in quadratic time (O(&radic;N)).</p>
+
+                    <ul>
+                        <li><strong>The Impact:</strong> It effectively cuts your key length in half. A 128-bit key drops to roughly 64 bits of security&mdash;putting it dangerously close to crackable territory.</li>
+                        <li><strong>The Fix:</strong> Double the combination length. Upgrading from AES-128 to AES-256 leaves an attacker facing 2<sup>128</sup> operations even with a fault-tolerant quantum computer running Grover&rsquo;s algorithm. The math holds; the lock simply needs a longer dial.</li>
+                    </ul>
+
+                    <figure class="figure">
+                        <img src="/img/blog/quantum-keylength.svg" alt="Bar chart: AES-128 provides 128-bit security classically, drops to about 64-bit security against Grover's algorithm, while AES-256 holds at about 128-bit security even against Grover's algorithm.">
+                        <figcaption>Grover&rsquo;s algorithm roughly halves effective key strength &mdash; AES-256 is the fix.</figcaption>
+                    </figure>
+
+                    <h2>Lock #2: Public-Key Cryptography Faces Shor&rsquo;s Algorithm</h2>
+
+                    <p>Public-key cryptography (RSA, Diffie-Hellman, and Elliptic Curve systems) relies on asymmetric math problems that are straightforward to calculate in one direction but virtually impossible to reverse&mdash;like multiplying two massive prime numbers together.</p>
+
+                    <p>Peter Shor proved that a sufficiently large quantum computer can exploit periodic mathematical patterns to solve prime factorization and discrete logarithms in polynomial time.</p>
+
+                    <ul>
+                        <li><strong>The Impact:</strong> This is not a speed boost; it is an architectural bypass. The backdoor lock on the mailbox swings completely open. Making RSA keys larger doesn&rsquo;t solve the problem, because the fundamental mathematical shortcut remains viable.</li>
+                        <li><strong>The Fix:</strong> Complete replacement. Every digital signature, identity certificate, and secure handshake protocol must migrate to new Post-Quantum Cryptography (PQC) standards&mdash;such as lattice-based algorithms&mdash;that rely on math problems quantum hardware cannot shortcut.</li>
+                    </ul>
+
+                    <h2>The Hidden Business Trap: &ldquo;Harvest Now, Decrypt Later&rdquo;</h2>
+
+                    <p>If cryptographically relevant quantum computers are still years away, why is quantum readiness a boardroom agenda item today?</p>
+
+                    <p>The urgency comes down to an active adversary strategy known as <strong>Harvest Now, Decrypt Later (HNDL)</strong>. Threat actors are intercepting and hoarding encrypted corporate communications, trade secrets, intellectual property, and sensitive customer data right now. They don&rsquo;t need to read it today; they just need to store it until a functional quantum machine becomes available to break the asymmetric handshake retroactively.</p>
+
+                    <p>If your data has a shelf life of 10, 20, or 30 years&mdash;such as financial records, medical archives, or national security infrastructure&mdash;its confidentiality window is already shrinking.</p>
+
+                    <h2>From Theory to Execution: The Quantum Readiness Roadmap</h2>
+
+                    <p>Waiting for quantum hardware to fully mature before upgrading is an operational trap. Replacing public-key infrastructure (PKI) is one of the most complex, multi-year migrations an enterprise can undertake. Organizations must shift from passive observation to active readiness:</p>
+
+                    <ul>
+                        <li><strong>Build a Cryptographic Bill of Materials (CBOM):</strong> You cannot secure what you cannot see. Most organizations have no unified inventory of where certificates, hard-coded public keys, algorithms, and third-party dependencies reside.</li>
+                        <li><strong>Prioritize by Data Shelf Life:</strong> Triage systems by how long the data inside them must remain secret. High-longevity sensitive data must move to post-quantum standards first to blunt the impact of HNDL attacks.</li>
+                        <li><strong>Architect for &ldquo;Crypto-Agility&rdquo;:</strong> Avoid hardcoding new algorithms into your applications. Design environments so cryptographic primitives can be swapped dynamically as standards (like NIST&rsquo;s PQC selections) evolve and harden.</li>
+                        <li><strong>Audit Hardware and the Supply Chain:</strong> Post-quantum algorithms feature larger key sizes and heavier handshake overhead. Many legacy networking appliances, firewalls, and embedded OT devices will lack the memory or throughput to support them, turning PQC migration into a physical hardware refresh cycle.</li>
+                    </ul>
+
+                    <p>Your encrypted archives aren&rsquo;t evaporating tomorrow, and symmetric systems have a clean path forward: upgrade to 256-bit keys and move on. But because our asymmetric locks require replacing the entire door, the organizations that treat quantum readiness as an immediate risk management exercise will survive the transition&mdash;while those that delay will find their past secrets exposed to the future.</p>
+                </div>
+
+                <p class="post-nav"><a href="/blog/">&larr; Back to all posts</a></p>
+            </article>
+        </div>
+    </div>
+
+    <!-- footer -->
+    <footer class="blog-footer">
+        <div class="container">
+            <p>&copy; 2026 Avesta Dayeny &middot; <a href="/">resume.avmoda.tech</a></p>
+        </div>
+    </footer>
+    <!-- ./footer -->
+
+</body>
+
+</html>

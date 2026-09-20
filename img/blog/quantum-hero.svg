@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" role="img" aria-labelledby="qHeroTitle qHeroDesc">
+  <title id="qHeroTitle">Two padlocks, side by side</title>
+  <desc id="qHeroDesc">A solid, intact padlock labeled AES-256 on the left, and a fractured, open padlock labeled RSA / ECC on the right, divided by a dashed line.</desc>
+  <defs>
+    <pattern id="qGrid" width="26" height="26" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.5" fill="#c7cde8"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="400" fill="#eef0f7"/>
+  <rect width="1200" height="400" fill="url(#qGrid)"/>
+  <line x1="600" y1="46" x2="600" y2="354" stroke="#b9c2e6" stroke-width="2" stroke-dasharray="8 8"/>
+
+  <!-- Intact lock: symmetric encryption -->
+  <g transform="translate(300,196) scale(3.6)">
+    <path d="M -12 -10 a 12 12 0 0 1 24 0 v 10 h -24 z" fill="none" stroke="#3a55a1" stroke-width="4.5" stroke-linejoin="round"/>
+    <rect x="-19" y="0" width="38" height="30" rx="5" fill="#3a55a1"/>
+    <circle cx="0" cy="12" r="3.4" fill="#eef0f7"/>
+    <rect x="-1.6" y="12" width="3.2" height="9" fill="#eef0f7"/>
+  </g>
+  <text x="300" y="332" text-anchor="middle" font-family="sans-serif" font-weight="700" font-size="20" letter-spacing="2" fill="#3a55a1">AES-256</text>
+  <text x="300" y="358" text-anchor="middle" font-family="sans-serif" font-size="13" letter-spacing="1" fill="#5a6789">SYMMETRIC — UPGRADE THE KEY</text>
+
+  <!-- Broken lock: asymmetric / public-key -->
+  <g transform="translate(900,196) scale(3.6)">
+    <path d="M -12 -10 a 12 12 0 0 1 15 -8" fill="none" stroke="#444" stroke-width="4.5" stroke-linecap="round"/>
+    <path d="M 4 -19 a 12 12 0 0 1 8 9 v 8" fill="none" stroke="#444" stroke-width="4.5" stroke-linecap="round"/>
+    <g transform="rotate(-7)">
+      <rect x="-19" y="0" width="17" height="30" rx="4" fill="#444"/>
+    </g>
+    <g transform="translate(5,3) rotate(11)">
+      <rect x="2" y="0" width="17" height="30" rx="4" fill="#444"/>
+    </g>
+    <path d="M -15 10 L 13 22" stroke="#D33E43" stroke-width="2.6" stroke-linecap="round"/>
+    <path d="M -11 19 L 9 7" stroke="#D33E43" stroke-width="2.6" stroke-linecap="round"/>
+  </g>
+  <text x="900" y="332" text-anchor="middle" font-family="sans-serif" font-weight="700" font-size="20" letter-spacing="2" fill="#444">RSA / ECC</text>
+  <text x="900" y="358" text-anchor="middle" font-family="sans-serif" font-size="13" letter-spacing="1" fill="#8a8a8a">ASYMMETRIC — REPLACE THE LOCK</text>
+</svg>
