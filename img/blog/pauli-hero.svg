@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" role="img" aria-labelledby="pauliHeroTitle pauliHeroDesc">
+  <title id="pauliHeroTitle">The three Pauli gates X, Y, and Z as Bloch sphere rotations</title>
+  <desc id="pauliHeroDesc">Three small spheres, each showing a 180 degree rotation arc around a different axis: X around the x-axis in blue, Y around the y-axis in purple, Z around the z-axis in teal.</desc>
+  <defs>
+    <pattern id="pauliGrid" width="26" height="26" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.5" fill="#c7cde8"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="400" fill="#eef0f7"/>
+  <rect width="1200" height="400" fill="url(#pauliGrid)"/>
+
+  <line x1="410" y1="30" x2="410" y2="370" stroke="#c7cde8" stroke-width="1.4" stroke-dasharray="6 6"/>
+  <line x1="790" y1="30" x2="790" y2="370" stroke="#c7cde8" stroke-width="1.4" stroke-dasharray="6 6"/>
+
+  <!-- X gate -->
+  <g transform="translate(220,96)">
+    <circle cx="0" cy="0" r="28" fill="#3a55a1"/>
+    <text x="0" y="9" text-anchor="middle" font-family="sans-serif" font-weight="700" font-size="28" fill="#fff">X</text>
+  </g>
+  <g transform="translate(220,246)">
+    <ellipse cx="0" cy="0" rx="88" ry="88" fill="none" stroke="#425BB5" stroke-width="1.8"/>
+    <ellipse cx="0" cy="0" rx="88" ry="24" fill="none" stroke="#9fb0e0" stroke-width="1.2" stroke-dasharray="4 4"/>
+    <line x1="0" y1="-88" x2="0" y2="88" stroke="#425BB5" stroke-width="1.2"/>
+    <path d="M 0 -88 Q 68 0 0 88" fill="none" stroke="#3a55a1" stroke-width="3" stroke-dasharray="7 5"/>
+    <circle cx="0" cy="-88" r="4.5" fill="#3a55a1"/>
+    <circle cx="0" cy="88" r="4.5" fill="#3a55a1"/>
+  </g>
+  <text x="220" y="378" text-anchor="middle" font-family="sans-serif" font-size="13" letter-spacing="0.5" fill="#3a55a1">180&#176; ABOUT X &#8212; BIT FLIP</text>
+
+  <!-- Y gate -->
+  <g transform="translate(600,96)">
+    <circle cx="0" cy="0" r="28" fill="#7d5fc4"/>
+    <text x="0" y="9" text-anchor="middle" font-family="sans-serif" font-weight="700" font-size="28" fill="#fff">Y</text>
+  </g>
+  <g transform="translate(600,246)">
+    <ellipse cx="0" cy="0" rx="88" ry="88" fill="none" stroke="#7d5fc4" stroke-width="1.8"/>
+    <ellipse cx="0" cy="0" rx="88" ry="24" fill="none" stroke="#cabdea" stroke-width="1.2" stroke-dasharray="4 4"/>
+    <line x1="-88" y1="0" x2="88" y2="0" stroke="#7d5fc4" stroke-width="1.2"/>
+    <path d="M -88 0 Q 0 -68 88 0" fill="none" stroke="#7d5fc4" stroke-width="3" stroke-dasharray="7 5"/>
+    <circle cx="-88" cy="0" r="4.5" fill="#7d5fc4"/>
+    <circle cx="88" cy="0" r="4.5" fill="#7d5fc4"/>
+  </g>
+  <text x="600" y="378" text-anchor="middle" font-family="sans-serif" font-size="13" letter-spacing="0.5" fill="#7d5fc4">180&#176; ABOUT Y &#8212; BIT + PHASE FLIP</text>
+
+  <!-- Z gate -->
+  <g transform="translate(980,96)">
+    <circle cx="0" cy="0" r="28" fill="#2f9e6e"/>
+    <text x="0" y="9" text-anchor="middle" font-family="sans-serif" font-weight="700" font-size="28" fill="#fff">Z</text>
+  </g>
+  <g transform="translate(980,246)">
+    <ellipse cx="0" cy="0" rx="88" ry="88" fill="none" stroke="#2f9e6e" stroke-width="1.8"/>
+    <ellipse cx="0" cy="0" rx="88" ry="24" fill="none" stroke="#a9dcc4" stroke-width="1.2" stroke-dasharray="4 4"/>
+    <line x1="0" y1="-88" x2="0" y2="88" stroke="#2f9e6e" stroke-width="1.2"/>
+    <path d="M -84 -11 A 85 24 0 1 1 84 -11" fill="none" stroke="#2f9e6e" stroke-width="3" stroke-dasharray="7 5"/>
+    <path d="M 70 -27 L 84 -11 L 61 -6 Z" fill="#2f9e6e"/>
+  </g>
+  <text x="980" y="378" text-anchor="middle" font-family="sans-serif" font-size="13" letter-spacing="0.5" fill="#2f9e6e">180&#176; ABOUT Z &#8212; PHASE FLIP</text>
+</svg>

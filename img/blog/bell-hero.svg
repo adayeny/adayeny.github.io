@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" role="img" aria-labelledby="bellHeroTitle bellHeroDesc">
+  <title id="bellHeroTitle">Two entangled qubits sharing one state</title>
+  <desc id="bellHeroDesc">Two particle nodes far apart, linked by a woven connector, pulsing in perfect synchrony to represent correlated measurement outcomes regardless of distance.</desc>
+  <defs>
+    <pattern id="bGrid" width="26" height="26" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.5" fill="#2a2f45"/>
+    </pattern>
+    <style>
+      .bpulse { animation: bellPulse 2.2s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
+      @keyframes bellPulse {
+        0%, 100% { r: 30px; opacity: 0.9; }
+        50% { r: 40px; opacity: 0.35; }
+      }
+      .wave { animation: wavePulse 2.2s ease-in-out infinite; }
+      @keyframes wavePulse {
+        0%, 100% { stroke-opacity: 0.35; }
+        50% { stroke-opacity: 0.9; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .bpulse, .wave { animation: none; }
+      }
+    </style>
+  </defs>
+  <rect width="1200" height="400" fill="#171a26"/>
+  <rect width="1200" height="400" fill="url(#bGrid)"/>
+
+  <!-- entangling link -->
+  <path class="wave" d="M 260 200 C 460 80, 740 320, 940 200" fill="none" stroke="#5b8dff" stroke-width="2.2" stroke-dasharray="2 10" stroke-linecap="round"/>
+
+  <!-- left qubit -->
+  <circle class="bpulse" cx="260" cy="200" r="30" fill="#5b8dff" opacity="0.5" style="animation-delay:0s"/>
+  <circle cx="260" cy="200" r="22" fill="#3a55a1" stroke="#8fb2ff" stroke-width="2"/>
+  <text x="260" y="207" text-anchor="middle" font-family="sans-serif" font-weight="700" font-size="16" fill="#fff">A</text>
+  <text x="260" y="256" text-anchor="middle" font-family="sans-serif" font-size="13" letter-spacing="1" fill="#9fb0e0">MEASURES |0&#10217;</text>
+
+  <!-- right qubit -->
+  <circle class="bpulse" cx="940" cy="200" r="30" fill="#5b8dff" opacity="0.5" style="animation-delay:0s"/>
+  <circle cx="940" cy="200" r="22" fill="#3a55a1" stroke="#8fb2ff" stroke-width="2"/>
+  <text x="940" y="207" text-anchor="middle" font-family="sans-serif" font-weight="700" font-size="16" fill="#fff">B</text>
+  <text x="940" y="256" text-anchor="middle" font-family="sans-serif" font-size="13" letter-spacing="1" fill="#9fb0e0">MEASURES |0&#10217;, ALWAYS</text>
+
+  <text x="600" y="90" text-anchor="middle" font-family="sans-serif" font-weight="700" font-size="22" fill="#fff">|&#934;&#10217; = (|00&#10217; + |11&#10217;) / &#8730;2</text>
+  <text x="600" y="340" text-anchor="middle" font-family="sans-serif" font-size="14" letter-spacing="1" fill="#7a86ad">ONE SHARED STATE &#8212; ANY DISTANCE</text>
+</svg>

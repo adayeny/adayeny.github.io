@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Hadamard gate symbol with an arrow to a superposition point">
+  <rect width="120" height="120" fill="#eef0f7"/>
+  <circle cx="26" cy="60" r="8" fill="#3a55a1"/>
+  <line x1="34" y1="60" x2="54" y2="60" stroke="#425BB5" stroke-width="2"/>
+  <path d="M 48 54 L 58 60 L 48 66 Z" fill="#425BB5"/>
+  <rect x="46" y="40" width="30" height="40" rx="5" fill="#3a55a1"/>
+  <text x="61" y="66" text-anchor="middle" font-family="sans-serif" font-weight="700" font-size="22" fill="#fff">H</text>
+  <line x1="80" y1="60" x2="96" y2="60" stroke="#425BB5" stroke-width="2"/>
+  <path d="M 90 54 L 100 60 L 90 66 Z" fill="#425BB5"/>
+  <circle cx="104" cy="60" r="6" fill="#D33E43"/>
+</svg>

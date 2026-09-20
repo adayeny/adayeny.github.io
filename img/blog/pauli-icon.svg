@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="X, Y, and Z gate badges">
+  <rect width="120" height="120" fill="#eef0f7"/>
+  <circle cx="30" cy="60" r="22" fill="#3a55a1"/>
+  <text x="30" y="68" text-anchor="middle" font-family="sans-serif" font-weight="700" font-size="22" fill="#fff">X</text>
+  <circle cx="60" cy="60" r="22" fill="#7d5fc4"/>
+  <text x="60" y="68" text-anchor="middle" font-family="sans-serif" font-weight="700" font-size="22" fill="#fff">Y</text>
+  <circle cx="90" cy="60" r="22" fill="#2f9e6e"/>
+  <text x="90" y="68" text-anchor="middle" font-family="sans-serif" font-weight="700" font-size="22" fill="#fff">Z</text>
+</svg>

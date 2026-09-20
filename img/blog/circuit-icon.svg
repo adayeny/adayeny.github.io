@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="A small two-wire quantum circuit with a Hadamard gate and a CNOT gate">
+  <rect width="120" height="120" fill="#eef0f7"/>
+  <line x1="16" y1="42" x2="104" y2="42" stroke="#333" stroke-width="2"/>
+  <line x1="16" y1="78" x2="104" y2="78" stroke="#333" stroke-width="2"/>
+  <rect x="30" y="26" width="26" height="32" rx="4" fill="#3a55a1"/>
+  <text x="43" y="48" text-anchor="middle" font-family="sans-serif" font-weight="700" font-size="16" fill="#fff">H</text>
+  <line x1="78" y1="42" x2="78" y2="78" stroke="#D33E43" stroke-width="2.2"/>
+  <circle cx="78" cy="42" r="5" fill="#D33E43"/>
+  <circle cx="78" cy="78" r="11" fill="none" stroke="#D33E43" stroke-width="2.2"/>
+  <line x1="70" y1="78" x2="86" y2="78" stroke="#D33E43" stroke-width="2.2"/>
+  <line x1="78" y1="70" x2="78" y2="86" stroke="#D33E43" stroke-width="2.2"/>
+</svg>

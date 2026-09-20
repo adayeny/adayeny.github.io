@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>The Pauli Gates: X, Y, Z, and the Building Blocks of Quantum Error Correction | Avesta Dayeny</title>
+    <meta name="description" content="The X, Y, and Z gates look like a simple bit-flip, phase-flip, and both-at-once. They're also the exact operators quantum error correction is built from — and the reason 2026's error-corrected chips work at all.">
+    <meta name="author" content="Avesta Dayeny">
+    <link rel="canonical" href="https://resume.avmoda.tech/blog/pauli-gates-x-y-z.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="The Pauli Gates: X, Y, Z, and the Building Blocks of Quantum Error Correction">
+    <meta property="og:description" content="X, Y, and Z look like a bit-flip and a phase-flip. They're also the exact operators quantum error correction is built from.">
+    <meta property="og:url" content="https://resume.avmoda.tech/blog/pauli-gates-x-y-z.html">
+    <meta property="og:image" content="https://resume.avmoda.tech/img/about-img.jpg">
+    <meta property="article:published_time" content="2026-09-16">
+    <meta property="article:author" content="Avesta Dayeny">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="The Pauli Gates: X, Y, Z, and the Building Blocks of Quantum Error Correction">
+    <meta name="twitter:description" content="X, Y, and Z look like a bit-flip and a phase-flip. They're also the exact operators quantum error correction is built from.">
+    <meta name="twitter:image" content="https://resume.avmoda.tech/img/about-img.jpg">
+    <meta name="twitter:site" content="@ADayeny">
+
+    <link rel="icon" href="../img/favicon.gif" type="image/x-icon">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "The Pauli Gates: X, Y, Z, and the Building Blocks of Quantum Error Correction",
+      "description": "X, Y, and Z look like a bit-flip and a phase-flip. They're also the exact operators quantum error correction is built from.",
+      "datePublished": "2026-09-16",
+      "dateModified": "2026-09-16",
+      "url": "https://resume.avmoda.tech/blog/pauli-gates-x-y-z.html",
+      "mainEntityOfPage": "https://resume.avmoda.tech/blog/pauli-gates-x-y-z.html",
+      "image": "https://resume.avmoda.tech/img/about-img.jpg",
+      "isPartOf": { "@type": "CreativeWorkSeries", "name": "Quantum Computing 101" },
+      "author": { "@type": "Person", "name": "Avesta Dayeny", "url": "https://resume.avmoda.tech/" },
+      "publisher": { "@type": "Person", "name": "Avesta Dayeny", "url": "https://resume.avmoda.tech/" }
+    }
+    </script>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/blog.css" rel="stylesheet">
+</head>
+
+<body class="blog-page">
+
+    <header class="blog-header">
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/blog/" class="active">Blog</a></li>
+                <li><a href="/#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="section blog-post">
+        <div class="container">
+            <article>
+                <h4 class="series-eyebrow">Quantum Computing 101 — Part 3 of 5</h4>
+                <p class="post-meta"><time datetime="2026-09-16">September 16, 2026</time></p>
+                <h1>The Pauli Gates: X, Y, Z, and the Building Blocks of Quantum Error Correction</h1>
+
+                <div class="hero-frame">
+                    <img src="/img/blog/pauli-hero.svg" alt="Three small Bloch spheres showing 180 degree rotations: X about the x-axis, Y about the y-axis, and Z about the z-axis">
+                </div>
+
+                <div class="post-body">
+                    <p>X, Y, and Z are the three simplest non-trivial single-qubit gates you can write down, and most introductions leave it there: X flips a bit, Z flips a phase, Y does both. That's correct, and it's also underselling them badly. These three operators — named after physicist Wolfgang Pauli, who introduced them decades before quantum computing existed, to describe electron spin — are not just three gates among many. They form a minimal, complete basis for describing every possible error a qubit can suffer, which is exactly why they sit at the center of every quantum error-correcting code ever designed.</p>
+
+                    <h2>The Three Gates</h2>
+
+                    <p>Each Pauli gate is a 180&#176; rotation of the Bloch sphere around one axis:</p>
+
+                    <pre><code>X = [ 0  1 ]     |0&#10217; &#8596; |1&#10217;        (bit flip)
+    [ 1  0 ]
+
+Y = [ 0  -i ]    |0&#10217; &#8596; i|1&#10217;, -i|0&#10217; &#8596; |1&#10217;   (bit + phase flip)
+    [ i   0 ]
+
+Z = [ 1   0 ]    |0&#10217; &#8594; |0&#10217;,  |1&#10217; &#8594; -|1&#10217;   (phase flip)
+    [ 0  -1 ]</code></pre>
+
+                    <ul>
+                        <li><strong>X (bit flip):</strong> the quantum analogue of a classical NOT gate. It swaps the amplitudes on <code>|0&#10217;</code> and <code>|1&#10217;</code> — a 180&#176; rotation around the sphere's x-axis.</li>
+                        <li><strong>Z (phase flip):</strong> leaves <code>|0&#10217;</code> untouched and flips the sign in front of <code>|1&#10217;</code>. It does nothing observable if you measure immediately in the computational basis — the effect only shows up once that qubit interacts with another one, or goes through another gate like Hadamard. A 180&#176; rotation around the z-axis.</li>
+                        <li><strong>Y (both):</strong> a combined bit-and-phase flip, and a 180&#176; rotation around the y-axis. Up to the global phase factors visible in its matrix, Y = iXZ — it isn't an independent third kind of error so much as X and Z happening together.</li>
+                    </ul>
+
+                    <h2>Why "Just Three" Is the Point</h2>
+
+                    <p>Here's the fact that turns this from a vocabulary lesson into something genuinely important: <strong>any</strong> possible single-qubit error — however exotic, however small, however it arises physically (a stray microwave pulse, a thermal photon, a cosmic ray) — can be written as a weighted combination of the identity, X, Y, and Z. There is no fifth kind of single-qubit error hiding out there that these four operators can't describe. This is a mathematical fact about the space of 2&times;2 matrices (the Pauli matrices, plus the identity, form a complete basis for it), not an engineering approximation.</p>
+
+                    <p>That's the entire reason quantum error correction is tractable at all. If errors could take infinitely many independent forms, you'd need to correct infinitely many things. Because every error decomposes into bit flips, phase flips, or both, a quantum error-correcting code only needs to detect and reverse <em>those</em> — and X and Z (with Y along for the ride) are literally the operators the correction step applies.</p>
+
+                    <h2>From Gates to Codes</h2>
+
+                    <p>Real quantum error-correcting codes — the surface code, and the LDPC-based codes now shipping in 2026-era hardware — work by spreading one "logical" qubit's worth of information across many physical qubits, then repeatedly measuring combinations of X and Z operators (called <strong>stabilizers</strong>) across that group. Critically, these measurements reveal <em>whether</em> a bit flip or phase flip occurred and <em>where</em>, without ever measuring — and thereby destroying — the fragile superposition holding the actual logical information. Once the type and location of the error is known, the fix is to apply exactly the right Pauli gate back, undoing it.</p>
+
+                    <p>This is not a hypothetical. It's precisely the mechanism behind 2026's biggest quantum computing milestone: Google's Willow chip demonstrating error correction that gets <em>better</em>, not worse, as more physical qubits are added per logical qubit — the long-sought "below threshold" result — while IBM's error-correction-focused processors work toward a demonstrable quantum advantage on a useful workload. Every one of those logical qubits is protected by continuously measuring stabilizers built from X and Z, and correcting with X and Z when something goes wrong. The three gates in this infographic-turned-blog-post are, quite literally, what a fault-tolerant quantum computer spends most of its time doing.</p>
+
+                    <h2>A Note for the Security-Minded</h2>
+
+                    <p>If you've read <a href="/blog/quantum-computing-encryption-risk.html">this site's earlier post on the quantum threat to encryption</a>, this is the missing engineering link. That post covered <em>why</em> a fault-tolerant quantum computer would be able to run Shor's algorithm against RSA and ECC. This post is a piece of <em>how we get a fault-tolerant quantum computer in the first place</em>: not by building perfect qubits (nobody knows how), but by building enough imperfect ones, wired together with codes built from X and Z, that logical errors become rare even though physical errors aren't. The 2026 error-correction milestones are the leading indicator to watch — they are the actual bottleneck between today's noisy machines and a machine that can run Shor's algorithm on a cryptographically relevant key size.</p>
+
+                    <h2>Key Takeaways</h2>
+
+                    <ul>
+                        <li>X, Y, and Z are 180&#176; Bloch sphere rotations around the x-, y-, and z-axes, corresponding to a bit flip, a combined bit-and-phase flip, and a phase flip.</li>
+                        <li>Together with the identity, they form a complete basis for <em>every</em> possible single-qubit error — there is no error a code needs to handle that isn't some combination of these.</li>
+                        <li>Quantum error-correcting codes work by measuring X- and Z-type stabilizers to locate errors without collapsing the protected information, then correcting with the matching Pauli gate.</li>
+                        <li>This is the actual mechanism behind 2026's below-threshold error correction results — not a separate, unrelated technique.</li>
+                    </ul>
+
+                    <p>Single gates only get you so far. The next post wires Hadamard and a two-qubit gate together into an actual circuit — the smallest one that does something no classical circuit can: create entanglement.</p>
+                </div>
+
+                <div class="series-nav">
+                    <h3>Quantum Computing 101</h3>
+                    <ol>
+                        <li><a href="/blog/quantum-state-vectors-probability-amplitudes.html">State Vectors &amp; Probability Amplitudes</a></li>
+                        <li><a href="/blog/hadamard-gate-quantum-superposition.html">The Hadamard Gate</a></li>
+                        <li class="current">The Pauli Gates: X, Y, Z</li>
+                        <li><a href="/blog/quantum-circuits-explained.html">Quantum Circuits: Wiring Gates Into Algorithms</a></li>
+                        <li><a href="/blog/quantum-bell-states-entanglement.html">Bell States &amp; Entanglement</a></li>
+                    </ol>
+                </div>
+
+                <p class="post-nav"><a href="/blog/">&larr; Back to all posts</a></p>
+            </article>
+        </div>
+    </div>
+
+    <footer class="blog-footer">
+        <div class="container">
+            <p>&copy; 2026 Avesta Dayeny &middot; <a href="/">resume.avmoda.tech</a></p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

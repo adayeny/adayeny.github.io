@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Inside a Qubit: State Vectors, Amplitudes, and the Math Beneath Quantum Computing | Avesta Dayeny</title>
+    <meta name="description" content="Before gates, circuits, or entanglement make sense, you need the object they all operate on: the qubit state vector. What alpha and beta actually mean, and why squaring them is where classical intuition breaks.">
+    <meta name="author" content="Avesta Dayeny">
+    <link rel="canonical" href="https://resume.avmoda.tech/blog/quantum-state-vectors-probability-amplitudes.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Inside a Qubit: State Vectors, Amplitudes, and the Math Beneath Quantum Computing">
+    <meta property="og:description" content="What alpha and beta actually mean in a qubit's state vector, and why squaring them is where classical intuition breaks.">
+    <meta property="og:url" content="https://resume.avmoda.tech/blog/quantum-state-vectors-probability-amplitudes.html">
+    <meta property="og:image" content="https://resume.avmoda.tech/img/about-img.jpg">
+    <meta property="article:published_time" content="2026-09-02">
+    <meta property="article:author" content="Avesta Dayeny">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Inside a Qubit: State Vectors, Amplitudes, and the Math Beneath Quantum Computing">
+    <meta name="twitter:description" content="What alpha and beta actually mean in a qubit's state vector, and why squaring them is where classical intuition breaks.">
+    <meta name="twitter:image" content="https://resume.avmoda.tech/img/about-img.jpg">
+    <meta name="twitter:site" content="@ADayeny">
+
+    <link rel="icon" href="../img/favicon.gif" type="image/x-icon">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Inside a Qubit: State Vectors, Amplitudes, and the Math Beneath Quantum Computing",
+      "description": "Before gates, circuits, or entanglement make sense, you need the object they all operate on: the qubit state vector.",
+      "datePublished": "2026-09-02",
+      "dateModified": "2026-09-02",
+      "url": "https://resume.avmoda.tech/blog/quantum-state-vectors-probability-amplitudes.html",
+      "mainEntityOfPage": "https://resume.avmoda.tech/blog/quantum-state-vectors-probability-amplitudes.html",
+      "image": "https://resume.avmoda.tech/img/about-img.jpg",
+      "isPartOf": { "@type": "CreativeWorkSeries", "name": "Quantum Computing 101" },
+      "author": { "@type": "Person", "name": "Avesta Dayeny", "url": "https://resume.avmoda.tech/" },
+      "publisher": { "@type": "Person", "name": "Avesta Dayeny", "url": "https://resume.avmoda.tech/" }
+    }
+    </script>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/blog.css" rel="stylesheet">
+</head>
+
+<body class="blog-page">
+
+    <header class="blog-header">
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/blog/" class="active">Blog</a></li>
+                <li><a href="/#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="section blog-post">
+        <div class="container">
+            <article>
+                <h4 class="series-eyebrow">Quantum Computing 101 — Part 1 of 5</h4>
+                <p class="post-meta"><time datetime="2026-09-02">September 2, 2026</time></p>
+                <h1>Inside a Qubit: State Vectors, Amplitudes, and the Math Beneath Quantum Computing</h1>
+
+                <div class="hero-frame">
+                    <img src="/img/blog/statevector-hero.svg" alt="A Bloch sphere showing a state vector psi at angle theta from the north pole and phi around the equator, with amplitude-to-probability formulas beside it">
+                </div>
+
+                <div class="post-body">
+                    <p>Most explanations of quantum computing start with a slogan: a qubit is 0 and 1 <em>at the same time</em>. It's a useful hook, and it's also the sentence that quietly stops people from understanding anything that follows. A qubit is not two things at once. It's a single, precise mathematical object — and everything else in this series (gates, circuits, entanglement) is just an operation performed on that object. If you get the object right, the rest stops feeling like magic.</p>
+
+                    <p>This post is that object.</p>
+
+                    <h2>The State Vector</h2>
+
+                    <p>A classical bit is either 0 or 1 — one number, no ambiguity. A qubit's state is a vector in a two-dimensional complex vector space, written as a combination of two basis states:</p>
+
+                    <pre><code>|&#968;&#10217; = &#945;|0&#10217; + &#946;|1&#10217;</code></pre>
+
+                    <p><code>|0&#10217;</code> and <code>|1&#10217;</code> (read "ket 0" and "ket 1") are the computational basis states — the quantum analogues of classical 0 and 1. &#945; (alpha) and &#946; (beta) are <strong>probability amplitudes</strong>. Written as a column vector, the same state looks like this:</p>
+
+                    <pre><code>        [ &#945; ]
+|&#968;&#10217; =  [ &#946; ]</code></pre>
+
+                    <p>That's the whole object. No mysticism yet — just two numbers describing one qubit. The interesting part is what kind of numbers &#945; and &#946; are, and what you're allowed to do with them.</p>
+
+                    <h2>Amplitudes Are Not Probabilities</h2>
+
+                    <p>This is the single most important distinction in the entire subject, and the one most casual explanations skip. &#945; and &#946; are <strong>complex numbers</strong>, not probabilities. You never observe them directly. What you observe — when you measure the qubit — is governed by the Born rule:</p>
+
+                    <pre><code>P(0) = |&#945;|&#178;
+P(1) = |&#946;|&#178;</code></pre>
+
+                    <p>Because those are the only two possible outcomes, the amplitudes must satisfy a normalization constraint:</p>
+
+                    <pre><code>|&#945;|&#178; + |&#946;|&#178; = 1</code></pre>
+
+                    <p>Squaring is not a rounding step or a notational quirk — it's where the "quantumness" actually lives. Amplitudes can be negative, and more generally complex (carrying a <em>phase</em>, not just a sign). Two amplitudes can partially or fully cancel each other out before you ever measure anything. Probabilities can't do that. This single fact — that the underlying quantities can interfere before they turn into probabilities — is the entire resource that quantum algorithms exploit. More on that in a moment.</p>
+
+                    <h2>The Bloch Sphere: Why a Qubit Is a Point on a Ball</h2>
+
+                    <p>Here's a derivation that most 101 explanations state as a given fact without showing why it's true, and it's worth the sixty seconds because the "why" is genuinely elegant.</p>
+
+                    <p>Start with the raw degrees of freedom: &#945; and &#946; are each complex, so that's 4 real numbers. Normalization (<code>|&#945;|&#178; + |&#946;|&#178; = 1</code>) is one constraint, so we're down to 3. Then there's a subtlety: multiplying the <em>entire</em> state vector by an overall phase factor <code>e^(i&#947;)</code> produces a different pair of numbers that is, in every experimentally observable way, the identical physical state. That global phase is unobservable, so it removes one more degree of freedom.</p>
+
+                    <p>4 real numbers, minus 1 for normalization, minus 1 for unobservable global phase, leaves exactly <strong>2</strong>. Two real numbers, bounded, is a description of a point on the surface of a sphere. That sphere is the <strong>Bloch sphere</strong>, and the two numbers are conventionally called &#952; (theta, the polar angle from the north pole) and &#966; (phi, the azimuthal angle around the equator):</p>
+
+                    <pre><code>|&#968;&#10217; = cos(&#952;/2)|0&#10217; + e^(i&#966;) sin(&#952;/2)|1&#10217;</code></pre>
+
+                    <p>The north pole (&#952;=0) is <code>|0&#10217;</code>. The south pole (&#952;=&#960;) is <code>|1&#10217;</code>. Every other point on the sphere's surface is some superposition of the two, with &#966; encoding the relative phase between them. Every single-qubit gate you'll meet in this series — X, Y, Z, and Hadamard — is nothing more than a rotation of this point around some axis of this sphere. That reframing is worth holding onto: <a href="/blog/pauli-gates-x-y-z.html">quantum gates are rotations</a>, not lookup tables.</p>
+
+                    <h2>A Worked Example: Equal Superposition</h2>
+
+                    <p>Let &#945; = &#946; = 1/&#8730;2. Check normalization first:</p>
+
+                    <pre><code>|&#945;|&#178; + |&#946;|&#178; = (1/&#8730;2)&#178; + (1/&#8730;2)&#178; = 1/2 + 1/2 = 1  &#10003;</code></pre>
+
+                    <p>Measuring this qubit gives 0 with probability 1/2 and 1 with probability 1/2 — a perfect coin flip. But it is critically <em>not</em> a classical coin flip. A classical coin that hasn't landed yet has a definite (if unknown) outcome; a probability distribution is our ignorance about a fact that already exists. This qubit has no definite value at all until measured — the 50/50 split is a fact about the physics, not about our information. That distinction is the entire reason quantum computers aren't just faster classical dice.</p>
+
+                    <h2>Interference: The Actual Resource</h2>
+
+                    <p>Because amplitudes are signed (and generally complex), two computational paths that arrive at the same outcome can add constructively (amplitudes reinforce, that outcome becomes more likely) or destructively (amplitudes cancel, that outcome becomes impossible). A well-designed quantum algorithm is, almost without exception, an elaborate machine for arranging destructive interference on the wrong answers and constructive interference on the right one — so that when you finally measure, the probability mass has been steered toward the answer you want.</p>
+
+                    <p>This is the actual mechanism behind the speedups in Shor's algorithm and Grover's algorithm — not "trying every answer at once," which is a common but misleading shorthand. It's also the reason the <a href="/blog/quantum-computing-encryption-risk.html">quantum threat to public-key cryptography</a> is a mathematical statement about interference patterns in a quantum Fourier transform, not about brute-force parallelism.</p>
+
+                    <h2>Classical vs. Quantum, Side by Side</h2>
+
+                    <ul>
+                        <li><strong>Classical:</strong> A system has a definite state at all times. Probabilities describe our uncertainty about it. Outcomes never cancel each other out.</li>
+                        <li><strong>Quantum:</strong> A system is described by a state vector of complex amplitudes. Probabilities emerge only at measurement, via the Born rule. Amplitudes can constructively or destructively interfere beforehand.</li>
+                    </ul>
+
+                    <h2>Key Takeaways</h2>
+
+                    <ul>
+                        <li>A qubit's state is a vector <code>|&#968;&#10217; = &#945;|0&#10217; + &#946;|1&#10217;</code>, where &#945; and &#946; are complex probability amplitudes.</li>
+                        <li>Probabilities come from squaring amplitude magnitudes: <code>P(0)=|&#945;|&#178;</code>, <code>P(1)=|&#946;|&#178;</code>, with <code>|&#945;|&#178;+|&#946;|&#178;=1</code>.</li>
+                        <li>Removing the normalization constraint and the unobservable global phase leaves exactly two real degrees of freedom — which is why every qubit state is a point on the Bloch sphere.</li>
+                        <li>Interference between amplitudes, not brute-force parallelism, is the resource quantum algorithms actually spend.</li>
+                    </ul>
+
+                    <p>With the object itself defined, the next question is: what operations are we allowed to perform on it? That's the Hadamard gate — the single instruction that takes a qubit off the poles of the sphere and into superposition.</p>
+                </div>
+
+                <div class="series-nav">
+                    <h3>Quantum Computing 101</h3>
+                    <ol>
+                        <li class="current">State Vectors &amp; Probability Amplitudes</li>
+                        <li><a href="/blog/hadamard-gate-quantum-superposition.html">The Hadamard Gate</a></li>
+                        <li><a href="/blog/pauli-gates-x-y-z.html">The Pauli Gates: X, Y, Z</a></li>
+                        <li><a href="/blog/quantum-circuits-explained.html">Quantum Circuits: Wiring Gates Into Algorithms</a></li>
+                        <li><a href="/blog/quantum-bell-states-entanglement.html">Bell States &amp; Entanglement</a></li>
+                    </ol>
+                </div>
+
+                <p class="post-nav"><a href="/blog/">&larr; Back to all posts</a></p>
+            </article>
+        </div>
+    </div>
+
+    <footer class="blog-footer">
+        <div class="container">
+            <p>&copy; 2026 Avesta Dayeny &middot; <a href="/">resume.avmoda.tech</a></p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

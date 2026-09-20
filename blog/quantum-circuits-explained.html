@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Quantum Circuits: How Gates Become Algorithms | Avesta Dayeny</title>
+    <meta name="description" content="A quantum circuit is a sequence of unitary gates applied to qubits over time. How single- and multi-qubit gates like CNOT, SWAP, and Toffoli compose into the algorithms that actually run on today's cloud quantum hardware.">
+    <meta name="author" content="Avesta Dayeny">
+    <link rel="canonical" href="https://resume.avmoda.tech/blog/quantum-circuits-explained.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Quantum Circuits: How Gates Become Algorithms">
+    <meta property="og:description" content="How single- and multi-qubit gates compose into the algorithms that actually run on today's cloud quantum hardware.">
+    <meta property="og:url" content="https://resume.avmoda.tech/blog/quantum-circuits-explained.html">
+    <meta property="og:image" content="https://resume.avmoda.tech/img/about-img.jpg">
+    <meta property="article:published_time" content="2026-09-23">
+    <meta property="article:author" content="Avesta Dayeny">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Quantum Circuits: How Gates Become Algorithms">
+    <meta name="twitter:description" content="How single- and multi-qubit gates compose into the algorithms that actually run on today's cloud quantum hardware.">
+    <meta name="twitter:image" content="https://resume.avmoda.tech/img/about-img.jpg">
+    <meta name="twitter:site" content="@ADayeny">
+
+    <link rel="icon" href="../img/favicon.gif" type="image/x-icon">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Quantum Circuits: How Gates Become Algorithms",
+      "description": "How single- and multi-qubit gates compose into the algorithms that actually run on today's cloud quantum hardware.",
+      "datePublished": "2026-09-23",
+      "dateModified": "2026-09-23",
+      "url": "https://resume.avmoda.tech/blog/quantum-circuits-explained.html",
+      "mainEntityOfPage": "https://resume.avmoda.tech/blog/quantum-circuits-explained.html",
+      "image": "https://resume.avmoda.tech/img/about-img.jpg",
+      "isPartOf": { "@type": "CreativeWorkSeries", "name": "Quantum Computing 101" },
+      "author": { "@type": "Person", "name": "Avesta Dayeny", "url": "https://resume.avmoda.tech/" },
+      "publisher": { "@type": "Person", "name": "Avesta Dayeny", "url": "https://resume.avmoda.tech/" }
+    }
+    </script>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/blog.css" rel="stylesheet">
+</head>
+
+<body class="blog-page">
+
+    <header class="blog-header">
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/blog/" class="active">Blog</a></li>
+                <li><a href="/#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="section blog-post">
+        <div class="container">
+            <article>
+                <h4 class="series-eyebrow">Quantum Computing 101 — Part 4 of 5</h4>
+                <p class="post-meta"><time datetime="2026-09-23">September 23, 2026</time></p>
+                <h1>Quantum Circuits: How Gates Become Algorithms</h1>
+
+                <div class="hero-frame">
+                    <img src="/img/blog/circuit-hero.svg" alt="A two-qubit circuit diagram: qubit 0 passes through a Hadamard gate then acts as the control of a CNOT gate targeting qubit 1, producing the entangled Bell state">
+                </div>
+
+                <div class="post-body">
+                    <p>Every gate covered so far in this series — <a href="/blog/hadamard-gate-quantum-superposition.html">Hadamard</a>, <a href="/blog/pauli-gates-x-y-z.html">X, Y, and Z</a> — has been a single instruction acting on a single qubit. Nothing interesting happens with just one instruction. A <strong>quantum circuit</strong> is what you get when you wire a sequence of these gates together, across one or more qubits, into something that actually computes: a recipe for transforming an initial state into a final one.</p>
+
+                    <h2>The General Form</h2>
+
+                    <p>Formally, a circuit is just a product of unitary matrices applied in sequence to an initial state:</p>
+
+                    <pre><code>|&#968;_out&#10217; = U_n ... U_2 U_1 |&#968;_in&#10217;</code></pre>
+
+                    <p>Each <code>U_i</code> is a gate (or a gate applied to a specific qubit or pair of qubits). Read left to right in the diagram, but right to left in the matrix product — the gate closest to the input state is applied first. That's the entire abstraction. Everything else in quantum algorithm design is about choosing which gates, in which order, on which qubits.</p>
+
+                    <h2>Beyond Single Qubits: Multi-Qubit Gates</h2>
+
+                    <p>Single-qubit gates rotate one Bloch sphere. To get anything a classical computer can't already do, you need gates that act on two or more qubits at once and can create correlations between them. Three show up constantly:</p>
+
+                    <ul>
+                        <li><strong>CNOT (Controlled-NOT):</strong> takes a control qubit and a target qubit. If the control is <code>|1&#10217;</code>, it flips the target; if the control is <code>|0&#10217;</code>, it does nothing. This is the workhorse two-qubit gate in almost every circuit you'll encounter, and it's the gate that turns superposition into entanglement.</li>
+                        <li><strong>SWAP:</strong> exchanges the states of two qubits entirely. Useful for routing information between qubits that aren't directly connected on real hardware, where only certain qubit pairs can interact.</li>
+                        <li><strong>Toffoli (CCNOT):</strong> a three-qubit gate with two controls — it flips the target only if <em>both</em> controls are <code>|1&#10217;</code>. It's the quantum version of a universal classical logic gate, and it's how you build reversible classical arithmetic inside a quantum circuit.</li>
+                    </ul>
+
+                    <h2>Worked Example: Building a Bell State</h2>
+
+                    <p>The hero circuit above is the smallest circuit that does something genuinely non-classical, and it's worth walking through gate by gate. Two qubits, both start at <code>|0&#10217;</code>:</p>
+
+                    <ol>
+                        <li><strong>Apply H to qubit 0.</strong> This puts qubit 0 into equal superposition: <code>(|0&#10217;+|1&#10217;)/&#8730;2</code>, while qubit 1 is untouched. Combined state: <code>(|00&#10217;+|10&#10217;)/&#8730;2</code>.</li>
+                        <li><strong>Apply CNOT, with qubit 0 as control and qubit 1 as target.</strong> Wherever qubit 0 is <code>|1&#10217;</code>, qubit 1 flips from <code>|0&#10217;</code> to <code>|1&#10217;</code>. The <code>|10&#10217;</code> term becomes <code>|11&#10217;</code>; the <code>|00&#10217;</code> term is untouched.</li>
+                    </ol>
+
+                    <p>Final state:</p>
+
+                    <pre><code>|&#968;&#10217; = (|00&#10217; + |11&#10217;) / &#8730;2</code></pre>
+
+                    <p>This is a <strong>Bell state</strong> — the two qubits are now entangled, meaning neither one has an independent state of its own anymore. Measure qubit 0 and you'll get 0 or 1 with 50/50 probability, exactly like before. But measuring qubit 1 will now <em>always</em> return the same value you got from qubit 0, every single time, no matter how far apart the two qubits are. That correlation, where it comes from, and why it doesn't let you send messages faster than light, is <a href="/blog/quantum-bell-states-entanglement.html">the entire subject of the final post in this series</a>.</p>
+
+                    <p>The CNOT truth table makes the flip-only-when-control-is-1 behavior explicit:</p>
+
+                    <table>
+                        <thead>
+                            <tr><th>Control (q0) in</th><th>Target (q1) in</th><th>Target (q1) out</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>0</td><td>0</td><td>0</td></tr>
+                            <tr><td>0</td><td>1</td><td>1</td></tr>
+                            <tr><td>1</td><td>0</td><td>1</td></tr>
+                            <tr><td>1</td><td>1</td><td>0</td></tr>
+                        </tbody>
+                    </table>
+
+                    <h2>Beyond Two Gates: Real Algorithms</h2>
+
+                    <p>Production circuits chain dozens to thousands of gates like these. The quantum Fourier transform — the component that gives Shor's algorithm its speedup against RSA and ECC — is built from layers of Hadamard gates interleaved with controlled phase-rotation gates, applied across every qubit in the register. Grover's search algorithm repeats a "diffusion" circuit built the same way, over and over, to amplify the amplitude on the correct answer. Every one of these is still, underneath the name, just a specific sequence of unitary gates chosen so that interference cancels the wrong answers and reinforces the right one — exactly the mechanism described in <a href="/blog/quantum-state-vectors-probability-amplitudes.html">the first post in this series</a>.</p>
+
+                    <h2>An Engineering Note: Circuits Are Also a Resource Budget</h2>
+
+                    <p>On paper, a circuit is free to be as deep and as wide as an algorithm needs. On real hardware in 2026, it isn't. Every additional gate is another chance for a physical error to occur before error correction can catch up, and every qubit pair that isn't physically adjacent on the chip needs SWAP gates to route information between them — each of which adds more error-prone operations. This is exactly the kind of resource-constrained thinking a hardware-first mindset already recognizes: an algorithm on paper is a wish list; an algorithm compiled ("transpiled," in quantum tooling) down to a real device's native gate set and physical qubit layout is an engineering artifact with real, measurable overhead. It's also, practically, something you can try yourself — every major cloud quantum provider accepts a circuit described exactly like the one above and runs it on real hardware in a queue you can submit to today.</p>
+
+                    <h2>Key Takeaways</h2>
+
+                    <ul>
+                        <li>A circuit is a sequence of unitary gates applied to qubits; the final state is the product of all the gate matrices applied to the initial state.</li>
+                        <li>CNOT, SWAP, and Toffoli extend single-qubit gates to two- and three-qubit operations, and CNOT specifically is what turns superposition into entanglement.</li>
+                        <li>The two-gate sequence H then CNOT is the standard recipe for building a Bell state — the smallest circuit exhibiting genuinely non-classical behavior.</li>
+                        <li>Real algorithms (Shor's, Grover's) are much larger versions of the same idea: gates arranged so interference does the computational work.</li>
+                        <li>Circuit depth and qubit connectivity are real engineering constraints on today's hardware, not just theoretical footnotes.</li>
+                    </ul>
+
+                    <p>The Bell state built above is the destination for this whole series. The final post covers what entanglement actually is, why Einstein found it so unsettling that he called it "spooky," and why a 2022 Nobel Prize was awarded for proving he was — reluctantly — wrong to doubt it.</p>
+                </div>
+
+                <div class="series-nav">
+                    <h3>Quantum Computing 101</h3>
+                    <ol>
+                        <li><a href="/blog/quantum-state-vectors-probability-amplitudes.html">State Vectors &amp; Probability Amplitudes</a></li>
+                        <li><a href="/blog/hadamard-gate-quantum-superposition.html">The Hadamard Gate</a></li>
+                        <li><a href="/blog/pauli-gates-x-y-z.html">The Pauli Gates: X, Y, Z</a></li>
+                        <li class="current">Quantum Circuits: Wiring Gates Into Algorithms</li>
+                        <li><a href="/blog/quantum-bell-states-entanglement.html">Bell States &amp; Entanglement</a></li>
+                    </ol>
+                </div>
+
+                <p class="post-nav"><a href="/blog/">&larr; Back to all posts</a></p>
+            </article>
+        </div>
+    </div>
+
+    <footer class="blog-footer">
+        <div class="container">
+            <p>&copy; 2026 Avesta Dayeny &middot; <a href="/">resume.avmoda.tech</a></p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

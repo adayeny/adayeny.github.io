@@ -7,25 +7,55 @@
     </url>
     <url>
         <loc>https://resume.avmoda.tech/blog/</loc>
-        <lastmod>2026-09-16</lastmod>
+        <lastmod>2026-09-30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://resume.avmoda.tech/blog/quantum-computing-encryption-risk.html</loc>
-        <lastmod>2026-09-02</lastmod>
+        <lastmod>2026-08-12</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://resume.avmoda.tech/blog/nvidia-pair-idle-silicon.html</loc>
-        <lastmod>2026-09-09</lastmod>
+        <lastmod>2026-08-19</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://resume.avmoda.tech/blog/15-dollar-ai-coding-agent.html</loc>
+        <lastmod>2026-08-26</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://resume.avmoda.tech/blog/quantum-state-vectors-probability-amplitudes.html</loc>
+        <lastmod>2026-09-02</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://resume.avmoda.tech/blog/hadamard-gate-quantum-superposition.html</loc>
+        <lastmod>2026-09-09</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://resume.avmoda.tech/blog/pauli-gates-x-y-z.html</loc>
         <lastmod>2026-09-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://resume.avmoda.tech/blog/quantum-circuits-explained.html</loc>
+        <lastmod>2026-09-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://resume.avmoda.tech/blog/quantum-bell-states-entanglement.html</loc>
+        <lastmod>2026-09-30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>

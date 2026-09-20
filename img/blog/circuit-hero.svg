@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" role="img" aria-labelledby="circHeroTitle circHeroDesc">
+  <title id="circHeroTitle">A two-qubit circuit building a Bell state</title>
+  <desc id="circHeroDesc">Qubit 0 starts at ket-0, passes through a Hadamard gate, then acts as the control of a CNOT gate targeting qubit 1, which also starts at ket-0. The output is the entangled Bell state (ket-00 plus ket-11) over the square root of 2.</desc>
+  <defs>
+    <pattern id="cGrid" width="26" height="26" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.5" fill="#c7cde8"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="400" fill="#eef0f7"/>
+  <rect width="1200" height="400" fill="url(#cGrid)"/>
+
+  <!-- qubit wires -->
+  <line x1="150" y1="140" x2="1040" y2="140" stroke="#333" stroke-width="2"/>
+  <line x1="150" y1="280" x2="1040" y2="280" stroke="#333" stroke-width="2"/>
+
+  <text x="100" y="146" text-anchor="end" font-family="sans-serif" font-size="20" fill="#222">|0&#10217;</text>
+  <text x="100" y="286" text-anchor="end" font-family="sans-serif" font-size="20" fill="#222">|0&#10217;</text>
+  <text x="60" y="146" text-anchor="end" font-family="sans-serif" font-size="13" fill="#888">q0</text>
+  <text x="60" y="286" text-anchor="end" font-family="sans-serif" font-size="13" fill="#888">q1</text>
+
+  <!-- Hadamard box on q0 -->
+  <rect x="320" y="108" width="64" height="64" rx="8" fill="#3a55a1"/>
+  <text x="352" y="150" text-anchor="middle" font-family="sans-serif" font-weight="700" font-size="28" fill="#fff">H</text>
+
+  <!-- CNOT -->
+  <line x1="620" y1="140" x2="620" y2="280" stroke="#D33E43" stroke-width="2.5"/>
+  <circle cx="620" cy="140" r="10" fill="#D33E43"/>
+  <circle cx="620" cy="280" r="24" fill="none" stroke="#D33E43" stroke-width="2.5"/>
+  <line x1="602" y1="280" x2="638" y2="280" stroke="#D33E43" stroke-width="2.5"/>
+  <line x1="620" y1="262" x2="620" y2="298" stroke="#D33E43" stroke-width="2.5"/>
+
+  <!-- measurement-ish output marker -->
+  <line x1="900" y1="140" x2="900" y2="280" stroke="#c7cde8" stroke-width="1.6" stroke-dasharray="5 5"/>
+
+  <text x="960" y="204" text-anchor="middle" font-family="sans-serif" font-weight="700" font-size="17" fill="#3a55a1">|&#968;&#10217; =</text>
+  <text x="960" y="228" text-anchor="middle" font-family="sans-serif" font-size="15" fill="#3a55a1">(|00&#10217; + |11&#10217;)</text>
+  <line x1="905" y1="238" x2="1015" y2="238" stroke="#3a55a1" stroke-width="1.4"/>
+  <text x="960" y="258" text-anchor="middle" font-family="sans-serif" font-size="15" fill="#3a55a1">&#8730;2</text>
+
+  <text x="352" y="60" text-anchor="middle" font-family="sans-serif" font-size="13" letter-spacing="1" fill="#5a6789">SUPERPOSITION</text>
+  <text x="620" y="60" text-anchor="middle" font-family="sans-serif" font-size="13" letter-spacing="1" fill="#5a6789">ENTANGLEMENT</text>
+  <text x="960" y="330" text-anchor="middle" font-family="sans-serif" font-size="13" letter-spacing="1" fill="#5a6789">BELL STATE</text>
+</svg>

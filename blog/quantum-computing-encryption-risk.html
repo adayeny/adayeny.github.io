@@ -16,7 +16,7 @@
     <meta property="og:description" content="Symmetric ciphers just need a longer key. Public-key cryptography needs to be replaced outright. Here's the difference, and why 'harvest now, decrypt later' makes this an operational risk today.">
     <meta property="og:url" content="https://resume.avmoda.tech/blog/quantum-computing-encryption-risk.html">
     <meta property="og:image" content="https://resume.avmoda.tech/img/about-img.jpg">
-    <meta property="article:published_time" content="2026-09-02">
+    <meta property="article:published_time" content="2026-08-12">
     <meta property="article:author" content="Avesta Dayeny">
 
     <!-- Twitter / X Card -->
@@ -35,8 +35,8 @@
       "@type": "BlogPosting",
       "headline": "Quantum Computing Will Break Half of Encryption — Here's Which Half",
       "description": "Quantum computers won't break all encryption equally: symmetric ciphers just need a longer key, but public-key cryptography needs to be replaced outright.",
-      "datePublished": "2026-09-02",
-      "dateModified": "2026-09-02",
+      "datePublished": "2026-08-12",
+      "dateModified": "2026-08-12",
       "url": "https://resume.avmoda.tech/blog/quantum-computing-encryption-risk.html",
       "mainEntityOfPage": "https://resume.avmoda.tech/blog/quantum-computing-encryption-risk.html",
       "image": "https://resume.avmoda.tech/img/about-img.jpg",
@@ -76,7 +76,7 @@
     <div class="section blog-post">
         <div class="container">
             <article>
-                <p class="post-meta"><time datetime="2026-09-02">September 2, 2026</time></p>
+                <p class="post-meta"><time datetime="2026-08-12">August 12, 2026</time></p>
                 <h1>Quantum Computing Will Break Half of Encryption — Here's Which Half</h1>
 
                 <div class="hero-frame">
@@ -141,11 +141,13 @@
                     <ul>
                         <li><strong>Build a Cryptographic Bill of Materials (CBOM):</strong> You cannot secure what you cannot see. Most organizations have no unified inventory of where certificates, hard-coded public keys, algorithms, and third-party dependencies reside.</li>
                         <li><strong>Prioritize by Data Shelf Life:</strong> Triage systems by how long the data inside them must remain secret. High-longevity sensitive data must move to post-quantum standards first to blunt the impact of HNDL attacks.</li>
-                        <li><strong>Architect for &ldquo;Crypto-Agility&rdquo;:</strong> Avoid hardcoding new algorithms into your applications. Design environments so cryptographic primitives can be swapped dynamically as standards (like NIST&rsquo;s PQC selections) evolve and harden.</li>
+                        <li><strong>Architect for &ldquo;Crypto-Agility&rdquo;:</strong> Avoid hardcoding new algorithms into your applications. Design environments so cryptographic primitives can be swapped dynamically as standards evolve and harden &mdash; NIST finalized its first three post-quantum standards (ML-KEM, ML-DSA, and SLH-DSA &mdash; FIPS 203, 204, and 205) in 2024, with a fourth, HQC, selected in 2025 as a hedge built on entirely different math.</li>
                         <li><strong>Audit Hardware and the Supply Chain:</strong> Post-quantum algorithms feature larger key sizes and heavier handshake overhead. Many legacy networking appliances, firewalls, and embedded OT devices will lack the memory or throughput to support them, turning PQC migration into a physical hardware refresh cycle.</li>
                     </ul>
 
                     <p>Your encrypted archives aren&rsquo;t evaporating tomorrow, and symmetric systems have a clean path forward: upgrade to 256-bit keys and move on. But because our asymmetric locks require replacing the entire door, the organizations that treat quantum readiness as an immediate risk management exercise will survive the transition&mdash;while those that delay will find their past secrets exposed to the future.</p>
+
+                    <p><strong>Want the engineering underneath this?</strong> The five-part <a href="/blog/quantum-state-vectors-probability-amplitudes.html">Quantum Computing 101</a> series on this blog builds up from a single qubit to exactly the machinery discussed here: how <a href="/blog/pauli-gates-x-y-z.html">quantum error correction</a> is what actually stands between today's noisy hardware and a machine that can run Shor's algorithm at a cryptographically relevant scale, and how <a href="/blog/quantum-bell-states-entanglement.html">entanglement</a> underpins the physics-based alternative to NIST's math-based PQC standards.</p>
                 </div>
 
                 <p class="post-nav"><a href="/blog/">&larr; Back to all posts</a></p>
