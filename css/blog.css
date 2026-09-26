@@ -108,6 +108,29 @@ body.blog-page {
     word-break: break-word;
 }
 
+.post-body blockquote {
+    margin: 30px 0;
+    padding: 4px 0 4px 24px;
+    border-left: 4px solid #425BB5;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 20px;
+    line-height: 1.5;
+    color: #333;
+}
+
+.post-body blockquote p {
+    margin-bottom: 8px;
+}
+
+.post-body blockquote p:last-child {
+    font-family: 'Lato', sans-serif;
+    font-style: normal;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    color: #888;
+}
+
 .post-body pre {
     background: #1e1e1e;
     color: #e8e8e8;

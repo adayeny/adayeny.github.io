@@ -7,7 +7,7 @@
     </url>
     <url>
         <loc>https://resume.avmoda.tech/blog/</loc>
-        <lastmod>2026-09-30</lastmod>
+        <lastmod>2026-10-14</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -56,6 +56,18 @@
     <url>
         <loc>https://resume.avmoda.tech/blog/quantum-bell-states-entanglement.html</loc>
         <lastmod>2026-09-30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://resume.avmoda.tech/blog/confidential-computing-for-ai.html</loc>
+        <lastmod>2026-10-07</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://resume.avmoda.tech/blog/ai-future-star-wars-not-terminator.html</loc>
+        <lastmod>2026-10-14</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>

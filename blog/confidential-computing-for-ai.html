@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Confidential Computing: The Locked Room Inside a Building You Don't Own | Avesta Dayeny</title>
+    <meta name="description" content="Data is encrypted at rest and in transit, but historically exposed the moment it's actually processed. Confidential computing closes that gap with hardware-isolated enclaves — and it's quietly becoming central to how AI infrastructure gets built.">
+    <meta name="author" content="Avesta Dayeny">
+    <link rel="canonical" href="https://resume.avmoda.tech/blog/confidential-computing-for-ai.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Confidential Computing: The Locked Room Inside a Building You Don't Own">
+    <meta property="og:description" content="Confidential computing protects data while it's being processed, not just at rest or in transit — and it's quietly becoming central to how AI infrastructure gets built.">
+    <meta property="og:url" content="https://resume.avmoda.tech/blog/confidential-computing-for-ai.html">
+    <meta property="og:image" content="https://resume.avmoda.tech/img/about-img.jpg">
+    <meta property="article:author" content="Avesta Dayeny">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Confidential Computing: The Locked Room Inside a Building You Don't Own">
+    <meta name="twitter:description" content="Confidential computing protects data while it's being processed, not just at rest or in transit.">
+    <meta name="twitter:image" content="https://resume.avmoda.tech/img/about-img.jpg">
+    <meta name="twitter:site" content="@ADayeny">
+
+    <link rel="icon" href="../img/favicon.gif" type="image/x-icon">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Confidential Computing: The Locked Room Inside a Building You Don't Own",
+      "description": "Confidential computing protects data while it's being processed, not just at rest or in transit — and it's quietly becoming central to how AI infrastructure gets built.",
+      "url": "https://resume.avmoda.tech/blog/confidential-computing-for-ai.html",
+      "mainEntityOfPage": "https://resume.avmoda.tech/blog/confidential-computing-for-ai.html",
+      "image": "https://resume.avmoda.tech/img/about-img.jpg",
+      "author": { "@type": "Person", "name": "Avesta Dayeny", "url": "https://resume.avmoda.tech/" },
+      "publisher": { "@type": "Person", "name": "Avesta Dayeny", "url": "https://resume.avmoda.tech/" }
+    }
+    </script>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/blog.css" rel="stylesheet">
+</head>
+
+<body class="blog-page">
+
+    <header class="blog-header">
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/blog/" class="active">Blog</a></li>
+                <li><a href="/#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="section blog-post">
+        <div class="container">
+            <article>
+                <h1>Confidential Computing: The Locked Room Inside a Building You Don&rsquo;t Own</h1>
+
+                <div class="hero-frame">
+                    <img src="/img/blog/confidential-computing-hero.svg" alt="Encrypted data flowing into and out of a locked trusted execution environment, isolated inside untrusted infrastructure that cannot see inside it">
+                </div>
+
+                <div class="post-body">
+                    <p>Every conversation about AI security today centers on the same three words: data, models, and trust. We encrypt data on disk. We encrypt data in transit over networks. But the moment that data is actually used &mdash; the split second it&rsquo;s decrypted inside a server to be processed &mdash; it has historically been exposed to whoever controls that server: the cloud provider, a systems administrator, or an attacker who&rsquo;s compromised the host.</p>
+
+                    <p>Confidential computing closes that gap. And as AI infrastructure scales to a point where enterprises are running proprietary models and sensitive data on hardware they don&rsquo;t own, it&rsquo;s quietly becoming one of the most important technologies in the security stack.</p>
+
+                    <h2>What Confidential Computing Actually Is</h2>
+
+                    <p>Confidential computing protects data while it&rsquo;s being processed, not just when it&rsquo;s stored or moving across a network. It does this using a <strong>Trusted Execution Environment (TEE)</strong> &mdash; an isolated, encrypted region inside a processor that even the operating system, the hypervisor, the cloud service provider&rsquo;s own engineers, and a compromised administrator account cannot see into.</p>
+
+                    <p>Think of it as a locked room inside a building you don&rsquo;t own. You can walk in, do your work, and leave &mdash; and even the landlord who controls every other room in the building has no key to that one.</p>
+
+                    <p>Three ingredients make this possible:</p>
+
+                    <ul>
+                        <li><strong>A hardware root of trust</strong> &mdash; a cryptographic key burned into the chip at manufacture time, which the CPU or GPU uses to prove it&rsquo;s genuine, unmodified hardware.</li>
+                        <li><strong>Memory encryption</strong> &mdash; data in RAM is encrypted with keys that never leave the processor. Not even the infrastructure owner holds them.</li>
+                        <li><strong>Remote attestation</strong> &mdash; before sending sensitive data anywhere, the receiving enclave must cryptographically prove: &ldquo;I am running exactly the code you approved, on genuine, untampered hardware.&rdquo; This is what lets two organizations that don&rsquo;t trust each other&rsquo;s infrastructure still trust a specific, verified enclave.</li>
+                    </ul>
+
+                    <p>This isn&rsquo;t new cryptography &mdash; it&rsquo;s a new place to run computation. The major silicon vendors have all built this capability into their hardware over the last several years:</p>
+
+                    <table>
+                        <thead>
+                            <tr><th>Vendor</th><th>Technology</th><th>Where It Runs</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Intel</td><td>SGX, TDX</td><td>CPU</td></tr>
+                            <tr><td>AMD</td><td>SEV-SNP</td><td>CPU</td></tr>
+                            <tr><td>ARM</td><td>TrustZone, CCA</td><td>CPU</td></tr>
+                            <tr><td>AWS</td><td>Nitro Enclaves</td><td>Cloud / CPU</td></tr>
+                            <tr><td>NVIDIA</td><td>Confidential Computing</td><td>GPU (Hopper, Blackwell)</td></tr>
+                        </tbody>
+                    </table>
+
+                    <h2>Why This Matters So Much for AI Infrastructure</h2>
+
+                    <p>For a long time, confidential computing was a CPU-only story &mdash; useful for databases and general workloads, but useless for AI, because AI runs on GPUs. That changed with NVIDIA&rsquo;s Hopper architecture, and it&rsquo;s a bigger deal than it sounds.</p>
+
+                    <p>Here&rsquo;s the specific problem it solves in AI:</p>
+
+                    <ul>
+                        <li><strong>Protecting model weights during training and inference.</strong> A trained model represents millions of dollars of compute and IP. When that model runs on rented cloud infrastructure, confidential computing keeps the weights encrypted in GPU memory &mdash; invisible even to the cloud provider hosting them.</li>
+                        <li><strong>Protecting user prompts and data during inference.</strong> When you send a prompt to an AI system, confidential computing can guarantee that neither the infrastructure operator nor anyone else can read that prompt or the response &mdash; only the encrypted enclave processing it can.</li>
+                        <li><strong>Protecting training data itself.</strong> Multiple organizations can now contribute sensitive datasets to train or fine-tune a shared model without any party &mdash; including the entity running the training job &mdash; ever seeing another party&rsquo;s raw data.</li>
+                        <li><strong>Enabling regulated industries to actually use cloud AI.</strong> Healthcare, finance, and government have sensitive-data obligations that made &ldquo;just use the cloud&rdquo; a non-starter for years. Confidential computing, backed by attestation, gives compliance teams a cryptographic guarantee &mdash; not just a policy promise &mdash; that data stays confidential.</li>
+                    </ul>
+
+                    <p>This is the difference between a cloud provider promising not to look at your data, and a cloud provider being mathematically incapable of looking at it.</p>
+
+                    <h2>Four Real Examples Worth Knowing</h2>
+
+                    <h3>1. Apple&rsquo;s Private Cloud Compute &mdash; Now Running on Someone Else&rsquo;s Hardware</h3>
+
+                    <p>Apple built Private Cloud Compute (PCC) to handle the Apple Intelligence requests too large for an iPhone to process locally, while guaranteeing that not even Apple&rsquo;s own staff can access user data sent to the cloud. What makes this genuinely remarkable: in mid-2026, Apple extended PCC to run on Google Cloud infrastructure &mdash; on NVIDIA Blackwell GPUs and Intel CPUs Apple doesn&rsquo;t own &mdash; under the exact same privacy guarantees, stacking NVIDIA&rsquo;s confidential computing, Intel TDX, and Google&rsquo;s own hardware root of trust so that compromising any single vendor still isn&rsquo;t enough to break the verification chain. That&rsquo;s confidential computing proving it can extend trust across company boundaries, not just within one company&rsquo;s data centers.</p>
+
+                    <h3>2. Signal&rsquo;s Private Contact Discovery &mdash; And an Honest Lesson in Its Limits</h3>
+
+                    <p>Signal has used Intel SGX enclaves for years so its servers can determine which of your contacts also use Signal, without ever seeing your address book. It&rsquo;s one of the most cited real-world TEE deployments in consumer software. It&rsquo;s also a useful reality check: in August 2026, security researchers disclosed two vulnerabilities in Signal&rsquo;s contact discovery enclave &mdash; a race condition allowing enclave memory to be read, and a separate flaw that could allow code execution &mdash; either of which would have required a malicious party to already control the server host. Signal patched both quickly, and no exploitation in the wild was found. It&rsquo;s a reminder that confidential computing hardens a system dramatically; it doesn&rsquo;t make it invulnerable.</p>
+
+                    <h3>3. Confidential AI on Azure with NVIDIA H100/H200 &mdash; Protecting Healthcare and Enterprise Workloads</h3>
+
+                    <p>Microsoft and NVIDIA&rsquo;s confidential GPU VMs are now used for real workloads: hospitals running Whisper-based speech-to-text transcription on patient audio without exposing that data to the cloud provider, and enterprises fine-tuning proprietary models while keeping both the model weights and the training data confidential from each other. This is confidential computing solving the exact regulated-industry problem described above.</p>
+
+                    <h3>4. Fortanix Confidential AI &mdash; Protecting Model IP in Enterprise Deployments</h3>
+
+                    <p>Model vendors want to license their models without them being copied or reverse-engineered. Enterprises want to run those models on their own sensitive data without sending that data back to the model vendor. Fortanix&rsquo;s confidential AI offering, built on NVIDIA&rsquo;s confidential computing, lets both happen at once &mdash; the model stays encrypted and unreadable even to the infrastructure running it, while the enterprise&rsquo;s data never leaves its control. It&rsquo;s a clean example of confidential computing resolving a trust deadlock that neither policy nor contracts could solve on their own.</p>
+
+                    <h2>The Honest Caveats</h2>
+
+                    <p>Confidential computing is powerful, not magic:</p>
+
+                    <ul>
+                        <li><strong>Performance overhead is real, though shrinking.</strong> Modern implementations report single-digit-percent overhead on inference workloads, down from far higher a few years ago.</li>
+                        <li><strong>Side-channel attacks remain an active research area.</strong> Hardware isolation is strong, but as the Signal SGX disclosure shows, it isn&rsquo;t theoretically unbreakable.</li>
+                        <li><strong>Verification is only as good as what&rsquo;s open.</strong> Attestation proves which code is running &mdash; but if that code isn&rsquo;t open-source and independently auditable, you&rsquo;re trusting the vendor&rsquo;s word about what the code actually does. Apple&rsquo;s approach of publishing every production PCC software image, plus a cryptographically tamper-proof transparency log, for public inspection is the industry&rsquo;s strongest answer to this so far.</li>
+                    </ul>
+
+                    <h2>Where This Is Heading</h2>
+
+                    <p>As AI moves from &ldquo;trained once, deployed everywhere&rdquo; to systems that are continuously fine-tuned on proprietary, often regulated data, the question of who can see the data while it&rsquo;s being computed on stops being a theoretical compliance checkbox and becomes the central infrastructure decision. Confidential computing is how the industry is answering it &mdash; not by asking cloud providers, AI vendors, and enterprises to trust each other, but by removing the need for that trust altogether. It&rsquo;s the same underlying shift this site covered in the context of <a href="/blog/quantum-computing-encryption-risk.html">post-quantum cryptography</a>: replacing a policy promise with a mathematical guarantee.</p>
+
+                    <p>If you&rsquo;re building, buying, or securing AI infrastructure in the next few years, this is a technology worth understanding at more than a buzzword level.</p>
+                </div>
+
+                <p class="post-nav"><a href="/blog/">&larr; Back to all posts</a></p>
+            </article>
+        </div>
+    </div>
+
+    <footer class="blog-footer">
+        <div class="container">
+            <p>&copy; 2026 Avesta Dayeny &middot; <a href="/">resume.avmoda.tech</a></p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
