@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" role="img" aria-labelledby="mcHeroTitle mcHeroDesc">
+  <title id="mcHeroTitle">A fractured central hub with every downstream node disconnected</title>
+  <desc id="mcHeroDesc">Six endpoint nodes radiating from one central hub. The hub is cracked through the middle, and every spoke and endpoint has gone dark and disconnected as a result.</desc>
+  <defs>
+    <pattern id="mcGrid" width="26" height="26" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.5" fill="#c7cde8"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="400" fill="#eef0f7"/>
+  <rect width="1200" height="400" fill="url(#mcGrid)"/>
+
+  <!-- spokes, all dimmed/broken -->
+  <g stroke="#bbb" stroke-width="2" stroke-dasharray="5 6">
+    <line x1="600" y1="200" x2="600" y2="70"/>
+    <line x1="600" y1="200" x2="712" y2="135"/>
+    <line x1="600" y1="200" x2="712" y2="265"/>
+    <line x1="600" y1="200" x2="600" y2="330"/>
+    <line x1="600" y1="200" x2="488" y2="265"/>
+    <line x1="600" y1="200" x2="488" y2="135"/>
+  </g>
+
+  <!-- dead endpoint nodes -->
+  <g fill="#fff" stroke="#bbb" stroke-width="2.5">
+    <circle cx="600" cy="70" r="22"/>
+    <circle cx="712" cy="135" r="22"/>
+    <circle cx="712" cy="265" r="22"/>
+    <circle cx="600" cy="330" r="22"/>
+    <circle cx="488" cy="265" r="22"/>
+    <circle cx="488" cy="135" r="22"/>
+  </g>
+  <g stroke="#bbb" stroke-width="2.5" stroke-linecap="round">
+    <path d="M 592 62 L 608 78 M 608 62 L 592 78"/>
+    <path d="M 704 127 L 720 143 M 720 127 L 704 143"/>
+    <path d="M 704 257 L 720 273 M 720 257 L 704 273"/>
+    <path d="M 592 322 L 608 338 M 608 322 L 592 338"/>
+    <path d="M 480 257 L 496 273 M 496 257 L 480 273"/>
+    <path d="M 480 127 L 496 143 M 496 127 L 480 143"/>
+  </g>
+
+  <!-- central hub, fractured -->
+  <circle cx="600" cy="200" r="54" fill="#3a3f52"/>
+  <path d="M 572 170 L 592 196 L 578 206 L 604 224 L 592 198 L 610 192 Z" fill="#eef0f7" stroke="#D33E43" stroke-width="2" stroke-linejoin="round"/>
+
+  <text x="600" y="66" text-anchor="middle" font-family="sans-serif" font-weight="700" font-size="16" letter-spacing="1" fill="#555">ONE NODE</text>
+  <text x="600" y="358" text-anchor="middle" font-family="sans-serif" font-weight="700" font-size="16" letter-spacing="1" fill="#555">EVERY DOWNSTREAM SYSTEM</text>
+</svg>
