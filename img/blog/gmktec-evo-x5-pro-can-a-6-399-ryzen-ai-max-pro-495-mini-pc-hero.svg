@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" role="img">
+  <defs>
+    <pattern id="phGrid" width="26" height="26" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.5" fill="#c7cde8"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="400" fill="#eef0f7"/>
+  <rect width="1200" height="400" fill="url(#phGrid)"/>
+  <rect x="40" y="60" width="12" height="280" fill="#425BB5"/>
+  <text x="90" y="124" font-family="Georgia, serif" font-size="58" font-weight="bold" fill="#3a55a1">GMKtec EVO-X5 Pro: Can a</text>
+  <text x="90" y="200" font-family="Georgia, serif" font-size="58" font-weight="bold" fill="#3a55a1">$6,399 Ryzen AI Max+ PRO 495</text>
+  <text x="90" y="276" font-family="Georgia, serif" font-size="58" font-weight="bold" fill="#3a55a1">Mini PC Close the Gap With...</text>
+</svg>
