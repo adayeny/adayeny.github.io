@@ -7,7 +7,7 @@
     </url>
     <url>
         <loc>https://resume.avmoda.tech/blog/</loc>
-        <lastmod>2026-10-08</lastmod>
+        <lastmod>2026-10-12</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -74,6 +74,12 @@
     <url>
         <loc>https://resume.avmoda.tech/blog/monoculture-trap-blackberry-intel-ai.html</loc>
         <lastmod>2026-10-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://resume.avmoda.tech/blog/gmktec-evo-x5-pro-can-a-6-399-ryzen-ai-max-pro-495-mini-pc.html</loc>
+        <lastmod>2026-10-12</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
