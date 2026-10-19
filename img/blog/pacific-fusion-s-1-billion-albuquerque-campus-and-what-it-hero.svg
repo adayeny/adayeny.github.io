@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" role="img" aria-labelledby="pfHeroTitle pfHeroDesc">
+  <title id="pfHeroTitle">Pacific Fusion's campus reaches its net-gain target in 2030, leaving a gap to datacenter needs over the next decade</title>
+  <desc id="pfHeroDesc">A timeline with a 2026 groundbreaking and a 2030 net-gain target for Pacific Fusion's Albuquerque demonstration campus. Beyond 2030 a dashed red segment marks the gap to datacenter power needs over the next decade, which the post does not quantify. The facility is stated to not operate as a power plant.</desc>
+  <defs>
+    <pattern id="pfGrid" width="26" height="26" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.5" fill="#c7cde8"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="400" fill="#eef0f7"/>
+  <rect width="1200" height="400" fill="url(#pfGrid)"/>
+
+  <!-- timeline -->
+  <line x1="100" y1="220" x2="560" y2="220" stroke="#3a3f52" stroke-width="4"/>
+  <line x1="560" y1="220" x2="1100" y2="220" stroke="#D33E43" stroke-width="4" stroke-dasharray="8 6"/>
+
+  <!-- milestones -->
+  <circle cx="180" cy="220" r="14" fill="#425BB5"/>
+  <circle cx="560" cy="220" r="14" fill="#425BB5"/>
+
+  <text x="180" y="180" text-anchor="middle" font-family="sans-serif" font-weight="700" font-size="14" letter-spacing="1" fill="#3a3f52">2026 GROUNDBREAKING</text>
+  <text x="560" y="180" text-anchor="middle" font-family="sans-serif" font-weight="700" font-size="14" letter-spacing="1" fill="#3a3f52">2030 NET GAIN TARGET</text>
+  <text x="820" y="270" text-anchor="middle" font-family="sans-serif" font-weight="700" font-size="14" letter-spacing="1" fill="#D33E43">DATACENTER NEEDS, NEXT DECADE</text>
+  <text x="360" y="310" text-anchor="middle" font-family="sans-serif" font-weight="700" font-size="14" letter-spacing="1" fill="#555">NOT A POWER PLANT</text>
+</svg>
