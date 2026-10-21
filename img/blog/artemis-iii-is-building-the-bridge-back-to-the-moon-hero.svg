@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" role="img" aria-labelledby="amHeroTitle amHeroDesc">
+  <title id="amHeroTitle">Artemis III is a low Earth orbit rehearsal of rendezvous and docking with lander hardware, placed between the crewed lunar flyby and the first crewed landing</title>
+  <desc id="amHeroDesc">A four-step sequence of Artemis missions drawn as connected nodes. Artemis I is uncrewed and Artemis II is a crewed lunar flyby, both shown as completed. Artemis III, targeted for 2027, is highlighted as an Earth-orbit rehearsal of rendezvous, docking and crew procedures with lander hardware. Artemis IV, the planned first crewed landing targeted for 2028, is drawn as an open node.</desc>
+  <defs>
+    <pattern id="amGrid" width="26" height="26" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.5" fill="#c7cde8"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="400" fill="#eef0f7"/>
+  <rect width="1200" height="400" fill="url(#amGrid)"/>
+
+  <!-- sequence link -->
+  <line x1="160" y1="200" x2="940" y2="200" stroke="#3a3f52" stroke-width="4"/>
+
+  <!-- nodes -->
+  <circle cx="160" cy="200" r="20" fill="#3a3f52"/>
+  <circle cx="420" cy="200" r="20" fill="#3a3f52"/>
+  <circle cx="680" cy="200" r="28" fill="#425BB5" stroke="#28356b" stroke-width="4"/>
+  <circle cx="680" cy="200" r="11" fill="#eef0f7"/>
+  <circle cx="940" cy="200" r="20" fill="#eef0f7" stroke="#3a3f52" stroke-width="4"/>
+
+  <!-- labels -->
+  <text x="160" y="262" text-anchor="middle" font-family="sans-serif" font-weight="700" font-size="13" letter-spacing="1" fill="#3a3f52">UNCREWED TEST</text>
+  <text x="420" y="262" text-anchor="middle" font-family="sans-serif" font-weight="700" font-size="13" letter-spacing="1" fill="#3a3f52">CREWED FLYBY</text>
+  <text x="680" y="262" text-anchor="middle" font-family="sans-serif" font-weight="700" font-size="13" letter-spacing="1" fill="#28356b">DOCKING REHEARSAL</text>
+  <text x="940" y="262" text-anchor="middle" font-family="sans-serif" font-weight="700" font-size="13" letter-spacing="1" fill="#3a3f52">FIRST CREWED LANDING</text>
+</svg>
